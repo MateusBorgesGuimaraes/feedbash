@@ -5,6 +5,7 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   const [active, setActive] = React.useState(false);
+  const [menuMobile, setmenuMobile] = React.useState(false);
   const [showSubmenu, setShowSubmenu] = React.useState(false);
 
   const handleToggleSubmenu = () => {
@@ -23,13 +24,30 @@ const Header = () => {
         <Link to="/">
           <img src={assets.darkLogo} alt="" />
         </Link>
-        <ul>
+        <button
+          onClick={() => setmenuMobile(!menuMobile)}
+          className={`${styles.menuMobile} ${
+            menuMobile ? styles.mobileActive : ""
+          }`}
+        >
+          <img src={assets.hamburgerMenu} alt="" />
+        </button>
+        <ul
+          className={`${styles.headerUl} ${
+            menuMobile ? styles.mobileActive : ""
+          }`}
+        >
           <li className={styles.submenuAnchor}>
             <button
               onClick={handleToggleSubmenu}
               className={styles.buttonSubmenu}
             >
-              CATEGORIAS <img src={assets.arrowDownSubMenu} alt="" />{" "}
+              CATEGORIAS{" "}
+              <img
+                className={`${styles.arrow} ${active ? styles.active : ""}`}
+                src={assets.arrowDownSubMenu}
+                alt=""
+              />{" "}
             </button>
             <ul
               className={`${styles.headerSubmenu} ${

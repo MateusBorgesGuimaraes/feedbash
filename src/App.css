@@ -84,8 +84,14 @@ a {
 }
 
 .container {
-  /* max-width: 73.75rem; */
-  max-width: 75.75rem;
-  padding: 0 1rem;
+  max-width: 73.75rem;
+  /* max-width: 75.75rem; */
+  /* padding: 0 1rem; */
   margin: 0 auto;
+}
+
+@media (max-width: 73.75rem) {
+  .container {
+    margin: 0 1rem;
+  }
 }

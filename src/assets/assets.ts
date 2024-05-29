@@ -35,6 +35,7 @@ import videoSubmenu from "./icons/video-submenu-icon.svg";
 import warning from "./icons/warning-icon.svg";
 import warningDarkBlue from "./icons/warning-darkBlue-icon.svg";
 import writeSubmenu from "./icons/write-submenu-icon.svg";
+import hamburgerMenu from "./icons/hamburger-menu-icon.svg";
 
 //IMAGES
 
@@ -56,6 +57,7 @@ import write from "./images/write-img.jpg";
 //EXPORTS
 
 export const assets = {
+  hamburgerMenu,
   arrowDownSubMenu,
   confoundedEmoji,
   darkLogo,

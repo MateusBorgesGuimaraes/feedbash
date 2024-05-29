@@ -19,7 +19,7 @@ import linkBlue from "./icons/link-blue-icon.svg";
 import linkPurple from "./icons/link-purple-icon.svg";
 import logoutIcon from "./icons/logout-icon.svg";
 import partyingEmoji from "./icons/partying-emoji-face-icon.svg";
-import pjotoSubmenu from "./icons/photo-submenu-icon.svg";
+import photoSubmenu from "./icons/photo-submenu-icon.svg";
 import rating from "./icons/rating-icon.svg";
 import relievedEmoji from "./icons/relieved-emoji-face-icon.svg";
 import report from "./icons/report-icon.svg";
@@ -41,7 +41,7 @@ import writeSubmenu from "./icons/write-submenu-icon.svg";
 import addPost from "./images/add-post-img.jpg";
 import art from "./images/art-img.jpg";
 import dashboard from "./images/dashboard-img.jpg";
-import hero from "./images/hero-img.jpg";
+import hero from "./images/hero-image.jpg";
 import login from "./images/login-resister-img.jpg";
 import logout from "./images/logout-img.jpg";
 import photo from "./images/photo-img.jpg";
@@ -75,7 +75,7 @@ export const assets = {
   linkPurple,
   logoutIcon,
   partyingEmoji,
-  pjotoSubmenu,
+  photoSubmenu,
   rating,
   relievedEmoji,
   report,

@@ -1,0 +1,91 @@
+:root {
+  --font-main: "Satoshi", sans-serif;
+  --font-secundary: "Clash Grotesk", sans-serif;
+
+  --white-ice: hsl(230, 30%, 96%);
+  --blue-50: hsl(219, 41%, 93%);
+  --blue-100: hsl(218, 42%, 80%);
+  --blue-200: hsl(218, 43%, 70%);
+  --blue-300: hsl(219, 43%, 56%);
+  --blue-400: hsl(218, 47%, 47%);
+  --blue-500: hsl(219, 82%, 34%);
+  --blue-600: hsl(219, 81%, 31%);
+  --blue-700: hsl(218, 82%, 24%);
+  --blue-800: hsl(218, 81%, 19%);
+  --blue-900: hsl(219, 81%, 15%);
+  --purple-50: hsl(268, 57%, 95%);
+  --purple-100: hsl(268, 55%, 86%);
+  --purple-200: hsl(267, 56%, 79%);
+  --purple-300: hsl(268, 56%, 70%);
+  --purple-400: hsl(268, 55%, 64%);
+  --purple-500: hsl(268, 56%, 55%);
+  --purple-600: hsl(268, 46%, 50%);
+  --purple-700: hsl(268, 46%, 39%);
+  --purple-800: hsl(267, 45%, 30%);
+  --purple-900: hsl(268, 46%, 23%);
+  --neutral-50: hsl(220, 6%, 91%);
+  --neutral-100: hsl(218, 5%, 71%);
+  --neutral-200: hsl(217, 6%, 57%);
+  --neutral-300: hsl(217, 9%, 37%);
+  --neutral-400: hsl(218, 17%, 25%);
+  --neutral-500: hsl(218, 82%, 6%);
+  --neutral-600: hsl(217, 80%, 6%);
+  --neutral-700: hsl(218, 83%, 5%);
+  --neutral-800: hsl(220, 79%, 4%);
+  --neutral-900: hsl(220, 86%, 3%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: var(--font-main);
+  color: var(--blue-800);
+  font-size: 1rem;
+  background: var(--white-ice);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0px;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  display: block;
+  /* font-size: 1rem;
+  font-family: var(--font-main);
+  color: var(--blue-800); */
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  /* max-width: 73.75rem; */
+  max-width: 75.75rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+}

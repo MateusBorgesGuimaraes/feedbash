@@ -1,0 +1,14 @@
+.talkContainer {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.talkP {
+  padding: 1.125rem 2rem;
+  background: var(--blue-50);
+  border-radius: 0.5rem;
+  box-shadow: 4px 4px hsl(219, 81%, 31%, 20%);
+  color: var(--blue-600);
+  font-weight: 700;
+}

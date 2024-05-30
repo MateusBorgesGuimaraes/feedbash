@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./Home.module.css";
 import Button from "../../components/Button/Button";
 import { assets } from "../../assets/assets";
+import Talk from "../../components/Talk/Talk";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -27,9 +29,59 @@ const Home = () => {
 
       <section className={`${styles.introductionBg}`}>
         <section className={`${styles.introductionLayout} container`}>
-          <p>ola</p>
-          <img src={assets.login} alt="" />
+          <div className={styles.talk}>
+            <Talk iconPosition="right" icon={assets.thinkingEmoji}>
+              Esta com duvida sobre algo que você fez mas não tem ninguem para
+              pedir feedback?
+            </Talk>
+
+            <Talk iconPosition="left" icon={assets.confoundedEmoji}>
+              Você é tímido e tem vergonha de pedir alguém pessoalmente?
+            </Talk>
+
+            <Talk iconPosition="right" icon={assets.relievedEmoji}>
+              Você gosta de descobrir coisas novas e ajudar as pessoas?
+            </Talk>
+
+            <Talk iconPosition="left" icon={assets.supriseEmoji}>
+              Gostaria de poder postar o link para o seu conteúdo de forma
+              anônima, gratuita e obter feedback confiável?
+            </Talk>
+
+            <Talk iconPosition="right" icon={assets.partyingEmoji}>
+              Cadastre-se ja na feedbash e participe de uma comunidade engajada
+              com o autoaprimoramento e o seu sucesso no que quer você queira
+              fazer !!!
+            </Talk>
+          </div>
         </section>
+      </section>
+
+      <section className={styles.categoriesBg}>
+        <div className={`${styles.categoriesLayout} container`}>
+          <div className={styles.categoriesTitle}>
+            <img src={assets.twoStarDec} alt="" />
+            <h2>CATEGORIAS</h2>
+            <img src={assets.twoStarDec} alt="" />
+          </div>
+          <div className={styles.imgCategoriesContainer}>
+            <Link className={styles.categoriesVideo} to="">
+              <p>VIDEOS</p>
+            </Link>
+
+            <Link className={styles.categoriesDesenhos} to="">
+              <p>DESENHOS</p>
+            </Link>
+
+            <Link className={styles.categoriesFotos} to="">
+              <p>FOTOS</p>
+            </Link>
+
+            <Link className={styles.categoriesEscrita} to="">
+              <p>ESCRITA</p>
+            </Link>
+          </div>
+        </div>
       </section>
     </section>
   );

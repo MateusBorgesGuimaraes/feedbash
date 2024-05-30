@@ -51,8 +51,162 @@
 
 .introductionBg {
   background: var(--purple-50);
-  height: 62.5rem;
+  /* height: 62.5rem; */
   z-index: 0;
+  display: flex;
+  justify-content: center;
   margin-top: -13.75rem;
   padding-top: 13.75rem;
+  padding-bottom: 2.5rem;
+}
+
+.talk {
+  margin-top: 2.5rem;
+  width: 61.25rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: 4px 4px hsl(218, 47%, 47%, 20%);
+}
+
+.talk {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.talk div:nth-child(1) {
+  grid-row: 1;
+  grid-column: 4/11;
+}
+
+.talk div:nth-child(2) {
+  grid-row: 2;
+  grid-column: 2/8;
+}
+
+.talk div:nth-child(3) {
+  grid-row: 3;
+  grid-column: 4/-1;
+}
+
+.talk div:nth-child(4) {
+  grid-row: 4;
+  grid-column: 2/10;
+}
+
+.talk div:nth-child(5) {
+  grid-row: 5;
+  grid-column: 4/12;
+}
+
+/* CATEGORIES */
+
+.categoriesBg {
+  background: linear-gradient(
+    to bottom,
+    var(--purple-50) 50%,
+    var(--purple-100) 50%
+  );
+  padding-bottom: 3.75rem;
+}
+
+.categoriesLayout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoriesTitle {
+  font-size: 2.5rem;
+  font-family: var(--font-secundary);
+  font-weight: 500;
+  color: var(--purple-700);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.imgCategoriesContainer {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.25rem;
+}
+
+.imgCategoriesContainer > a {
+  width: 17.5rem;
+  height: 15.3125rem;
+}
+
+.categoriesVideo,
+.categoriesFotos,
+.categoriesDesenhos,
+.categoriesEscrita {
+  background-image: url("../../assets/images/videos-img.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-secundary);
+  color: white;
+  font-weight: 600;
+  font-size: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.categoriesVideo::before,
+.categoriesFotos::before,
+.categoriesDesenhos::before,
+.categoriesEscrita::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-image: fill 0
+    linear-gradient(hsl(268, 46%, 23%, 40%), hsl(268, 55%, 64%, 40%));
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-image 0.3s ease;
+}
+
+.categoriesVideo > p,
+.categoriesFotos > p,
+.categoriesDesenhos > p,
+.categoriesEscrita > p {
+  z-index: 12;
+}
+
+.categoriesVideo:hover::before,
+.categoriesFotos:hover::before,
+.categoriesDesenhos:hover::before,
+.categoriesEscrita:hover::before {
+  border-image: fill 0
+    linear-gradient(hsl(268, 46%, 23%, 10%), hsl(268, 55%, 64%, 10%));
+}
+
+.categoriesVideo:hover,
+.categoriesFotos:hover,
+.categoriesDesenhos:hover,
+.categoriesEscrita:hover {
+  color: var(--purple-900);
+}
+
+.categoriesFotos {
+  background-image: url("../../assets/images/photo-img.jpg");
+}
+
+.categoriesDesenhos {
+  background-image: url("../../assets/images/art-img.jpg");
+}
+
+.categoriesEscrita {
+  background-image: url("../../assets/images/write-img.jpg");
 }

@@ -61,6 +61,7 @@
 
 .headerSubmenu {
   opacity: 0;
+  z-index: 100;
   transform: translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   background: var(--blue-100);
@@ -96,6 +97,7 @@
 @media (max-width: 43.75rem) {
   .headerUl {
     display: none !important;
+    z-index: 50;
     flex-direction: column;
     position: absolute;
     bottom: -240px;

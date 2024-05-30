@@ -4,6 +4,7 @@ import Button from "../../components/Button/Button";
 import { assets } from "../../assets/assets";
 import Talk from "../../components/Talk/Talk";
 import { Link } from "react-router-dom";
+import CardButton from "../../components/CardButton/CardButton";
 
 const Home = () => {
   return (
@@ -65,21 +66,13 @@ const Home = () => {
             <img src={assets.twoStarDec} alt="" />
           </div>
           <div className={styles.imgCategoriesContainer}>
-            <Link className={styles.categoriesVideo} to="">
-              <p>VIDEOS</p>
-            </Link>
+            <CardButton img={assets.videos}>VIDEOS</CardButton>
 
-            <Link className={styles.categoriesDesenhos} to="">
-              <p>DESENHOS</p>
-            </Link>
+            <CardButton img={assets.art}>DESENHOS</CardButton>
 
-            <Link className={styles.categoriesFotos} to="">
-              <p>FOTOS</p>
-            </Link>
+            <CardButton img={assets.photo}>FOTOS</CardButton>
 
-            <Link className={styles.categoriesEscrita} to="">
-              <p>ESCRITA</p>
-            </Link>
+            <CardButton img={assets.write}>ESCRITA</CardButton>
           </div>
         </div>
       </section>

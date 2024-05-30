@@ -12,3 +12,12 @@
   color: var(--blue-600);
   font-weight: 700;
 }
+
+@media (max-width: 27.5rem) {
+  .talkContainer > img {
+    display: none;
+  }
+  .talkP {
+    padding: 1rem 1.5rem;
+  }
+}

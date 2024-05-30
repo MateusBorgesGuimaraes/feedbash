@@ -1,0 +1,46 @@
+.cardButtonContainer {
+  position: relative;
+  display: inline-block;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-secundary);
+  overflow: hidden;
+}
+
+.cardButtonContainer img {
+  display: block;
+  width: 17.5rem;
+  height: 15.3125rem;
+}
+
+.cardButtonContainer p {
+  position: absolute;
+  color: white;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+
+.cardButtonContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-image: fill 0
+    linear-gradient(hsl(268, 46%, 23%, 40%), hsl(268, 55%, 64%, 40%));
+  border-radius: inherit;
+  pointer-events: none;
+  transition: border-image 0.3s ease;
+}
+
+.cardButtonContainer:hover::before {
+  border-image: fill 0
+    linear-gradient(hsl(268, 46%, 23%, 10%), hsl(268, 55%, 64%, 10%));
+}
+
+.cardButtonContainer:hover p {
+  color: var(--purple-900);
+}

@@ -1,0 +1,81 @@
+.tableLayout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.containerTable {
+  overflow: hidden;
+  border-radius: 0 0 0.5rem 0.5rem;
+  grid-column: 2/12;
+  margin-top: 2.5rem;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.tableItem {
+  width: 100%;
+  background: var(--white-ice);
+  border-collapse: collapse;
+}
+
+.tableItem caption,
+.tableItem th,
+.tableItem td {
+  padding: 1rem;
+}
+
+.tableItem caption,
+.tableItem th {
+  text-align: left;
+}
+
+.tableItem caption {
+  border-radius: 0.5rem 0.5rem 0 0;
+  background: var(--purple-300);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.tableItem th {
+  background: var(--purple-200);
+  color: var(--purple-900);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.tableItem tr {
+  font-weight: 700;
+}
+
+.tableItem tr > td > a:first-child {
+  display: flex;
+  gap: 0.375rem;
+}
+
+.tableItem tr:nth-of-type(2n) {
+  background: white;
+}
+
+.containerTable::-webkit-scrollbar {
+  height: 12px;
+}
+
+.containerTable::-webkit-scrollbar-thumb,
+.containerTable::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.containerTable::-webkit-scrollbar-thumb {
+  background: var(--purple-300);
+}
+
+.containerTable::-webkit-scrollbar-track {
+  background: var(--neutral-200);
+}
+
+@media (max-width: 38.75rem) {
+  .containerTable {
+    grid-column: 1/-1;
+  }
+}

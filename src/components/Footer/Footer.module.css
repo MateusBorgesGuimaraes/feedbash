@@ -1,0 +1,57 @@
+.footerBg {
+  background: var(--blue-900);
+}
+
+.footerLayout {
+  padding: 2.5rem 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoFooter {
+  align-self: flex-start;
+}
+
+.centerFooter {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7.75rem;
+}
+
+.centerFooter > div > h4 {
+  font-family: var(--font-secundary);
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.centerFooter > div > p {
+  color: var(--blue-100);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.copyFooter {
+  margin-top: 2rem;
+  color: var(--blue-100);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+@media (max-width: 54.375rem) {
+  .centerFooter {
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 27.5rem) {
+  .centerFooter {
+    gap: 2rem;
+  }
+}

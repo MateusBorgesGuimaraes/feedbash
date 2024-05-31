@@ -1,6 +1,7 @@
 // ICONS
 
 import arrowDownSubMenu from "./icons/arrow-down-menu-icon.svg";
+import all from "./icons/all-icon.svg";
 import confoundedEmoji from "./icons/confounded-emoji-face-icon.svg";
 import darkLogo from "./icons/dark-logo-icon.svg";
 import decTitlePurple from "./icons/dec-title-ligth-purple-icon.svg";
@@ -57,6 +58,7 @@ import write from "./images/write-img.jpg";
 //EXPORTS
 
 export const assets = {
+  all,
   hamburgerMenu,
   arrowDownSubMenu,
   confoundedEmoji,

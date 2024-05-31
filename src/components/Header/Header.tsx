@@ -56,6 +56,12 @@ const Header = () => {
             >
               <li>
                 <Link to="/">
+                  <img src={assets.all} alt="" />
+                  ALL
+                </Link>
+              </li>
+              <li>
+                <Link to="/">
                   <img src={assets.photoSubmenu} alt="" />
                   FOTOS
                 </Link>
@@ -84,7 +90,7 @@ const Header = () => {
             <Link to="sobre">SOBRE </Link>
           </li>
           <li>
-            <Link to="categoria">
+            <Link className={styles.headerLogin} to="categoria">
               LOGIN <img src={assets.user} alt="" />{" "}
             </Link>
           </li>

@@ -5,6 +5,7 @@ import { assets } from "../../assets/assets";
 import Talk from "../../components/Talk/Talk";
 import { Link } from "react-router-dom";
 import CardButton from "../../components/CardButton/CardButton";
+import TableComponent from "../../components/TableComponent/TableComponent";
 
 const Home = () => {
   return (
@@ -74,6 +75,106 @@ const Home = () => {
 
             <CardButton img={assets.write}>ESCRITA</CardButton>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.tableBg}>
+        <div className={`${styles.tableLayout} container`}>
+          <div className={styles.tableTitle}>
+            <h1>ULTIMAS POSTAGENS</h1>
+            <img src={assets.twoStarDec} alt="" />
+          </div>
+
+          <TableComponent
+            caption="recentes..."
+            tableColor="var(--white-ice)"
+            captionColor="var(--purple-300)"
+            headerColor="var(--purple-200)"
+            headerTextColor="var(--purple-900)"
+            bodyTextColor="var(--purple-700)"
+          >
+            <tr>
+              <th>link</th>
+              <th>autor</th>
+              <th>âmbito</th>
+              <th>categoria</th>
+              <th>data</th>
+            </tr>
+
+            <>
+              <tr>
+                <td>
+                  <Link to="">
+                    <img src={assets.linkPurple} alt="" /> link
+                  </Link>
+                </td>
+                <td>mateus borges</td>
+                <td>educacional</td>
+                <td>desenho</td>
+                <td>12/07/2023</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <Link to="">
+                    <img src={assets.linkPurple} alt="" /> link
+                  </Link>
+                </td>
+                <td>mateus borges</td>
+                <td>educacional</td>
+                <td>desenho</td>
+                <td>12/07/2023</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <Link to="">
+                    <img src={assets.linkPurple} alt="" /> link
+                  </Link>
+                </td>
+                <td>mateus borges</td>
+                <td>educacional</td>
+                <td>desenho</td>
+                <td>12/07/2023</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <Link to="">
+                    <img src={assets.linkPurple} alt="" /> link
+                  </Link>
+                </td>
+                <td>mateus borges</td>
+                <td>educacional</td>
+                <td>desenho</td>
+                <td>12/07/2023</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <Link to="">
+                    <img src={assets.linkPurple} alt="" /> link
+                  </Link>
+                </td>
+                <td>mateus borges</td>
+                <td>educacional</td>
+                <td>desenho</td>
+                <td>12/07/2023</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <Link to="">
+                    <img src={assets.linkPurple} alt="" /> link
+                  </Link>
+                </td>
+                <td>mateus borges</td>
+                <td>educacional</td>
+                <td>desenho</td>
+                <td>12/07/2023</td>
+              </tr>
+            </>
+          </TableComponent>
         </div>
       </section>
     </section>

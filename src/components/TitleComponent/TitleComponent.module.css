@@ -1,0 +1,13 @@
+.titleStyles {
+  font-size: 2rem;
+  font-family: var(--font-secundary);
+  font-weight: 600;
+  position: relative;
+}
+
+.titleStyles > img {
+  position: absolute;
+  z-index: -1;
+  top: 4px;
+  left: -20px;
+}

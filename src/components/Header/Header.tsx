@@ -90,7 +90,7 @@ const Header = () => {
             <Link to="sobre">SOBRE </Link>
           </li>
           <li>
-            <Link className={styles.headerLogin} to="categoria">
+            <Link className={styles.headerLogin} to="/login">
               LOGIN <img src={assets.user} alt="" />{" "}
             </Link>
           </li>

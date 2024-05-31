@@ -132,7 +132,7 @@
   box-shadow: 4px 4px hsl(218, 47%, 47%, 20%);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
+  gap: 3rem;
 }
 
 .talk div:nth-child(1) {

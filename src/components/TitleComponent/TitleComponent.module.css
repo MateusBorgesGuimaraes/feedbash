@@ -11,3 +11,16 @@
   top: 4px;
   left: -20px;
 }
+
+@media (max-width: 27.5rem) {
+  .titleStyles {
+    font-size: 1.5rem;
+  }
+
+  .titleStyles > img {
+    position: absolute;
+    z-index: -1;
+    top: 0px;
+    left: -14px;
+  }
+}

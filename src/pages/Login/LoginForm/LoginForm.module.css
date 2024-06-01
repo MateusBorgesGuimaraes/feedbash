@@ -4,3 +4,155 @@
   flex-direction: column;
   gap: 2rem;
 }
+
+.containerForm {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-bottom: 2.5rem;
+  box-shadow: 4px 4px hsl(268, 56%, 55%, 20%);
+  border-radius: 0.5rem;
+}
+
+.imgSection {
+  grid-column: 1/7;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 0px;
+  border-radius: 8px 0px 0px 8px;
+}
+
+.imgSection > img {
+  width: 31.25rem;
+  height: 31.25rem;
+}
+
+.formSection {
+  grid-column: 7/-1;
+  border-radius: 0px 8px 8px 0px;
+  background: linear-gradient(var(--purple-400), var(--purple-600));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formSectionContainer {
+  position: relative;
+  width: 100%;
+  padding: 0px 2.5rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.formSectionContainer button {
+  margin-top: 1.25rem;
+  align-self: flex-end;
+}
+
+.linkForm {
+  position: absolute;
+  bottom: 2.5rem;
+  font-weight: 600;
+  color: var(--purple-50);
+  text-decoration: underline;
+}
+
+.formSectionContainer > div {
+  margin-bottom: 1.5rem;
+}
+
+.formSectionContainer div:last-of-type {
+  margin-bottom: 0px;
+}
+
+.formFild {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+@media (max-width: 62.5rem) {
+  .imgSection {
+    padding: 2rem 0px;
+  }
+
+  .imgSection > img {
+    width: 25rem;
+    height: 25rem;
+  }
+
+  .formSectionContainer {
+    padding: 0px 2rem;
+  }
+
+  .formSectionContainer button {
+    align-self: self-start;
+  }
+
+  .linkForm {
+    top: 15rem;
+  }
+}
+
+@media (max-width: 47.5rem) {
+  .loginContainer {
+    margin-top: 1.5rem;
+    gap: 1rem;
+  }
+
+  .imgSection > img {
+    width: 21.875rem;
+    height: 21.875rem;
+  }
+
+  .formSectionContainer {
+    padding: 0px 2.5rem;
+  }
+}
+
+@media (max-width: 41.25rem) {
+  .imgSection {
+    display: none;
+  }
+
+  .formSection {
+    grid-column: 1/-1;
+    border-radius: 0.5rem;
+  }
+
+  .formSectionContainer {
+    padding: 4rem 2.5rem;
+  }
+
+  .formSectionContainer button {
+    align-self: flex-end;
+  }
+
+  .linkForm {
+    bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 31.25rem) {
+  .formSectionContainer button {
+    align-self: flex-start;
+  }
+  .formSectionContainer {
+    padding: 3rem 1rem;
+  }
+
+  .linkForm {
+    align-self: flex-end;
+    bottom: 1rem;
+    left: 1rem;
+  }
+}
+
+@media (max-width: 21.25rem) {
+  .linkForm {
+    left: 1rem;
+    font-size: 0.875rem;
+  }
+}

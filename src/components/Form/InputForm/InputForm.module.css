@@ -1,0 +1,10 @@
+.inputForm {
+  background: white;
+  height: 2.5rem;
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  font-family: var(--font-secundary);
+  color: var(--purple-800);
+  border-left: 0.25rem solid var(--purple-300);
+}

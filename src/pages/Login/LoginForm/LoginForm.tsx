@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import TitleComponent from "../../../components/TitleComponent/TitleComponent";
 import styles from "./LoginForm.module.css";
 import { assets } from "../../../assets/assets";
-import Button from "../../../components/Button/Button";
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import InputForm from "../../../components/Form/InputForm/InputForm";
+import LabelForm from "../../../components/Form/LabelForm/LabelForm";
+import ErrorForm from "../../../components/Form/ErrorForm/ErrorForm";
+import ButtonForm from "../../../components/ButtonForm/ButtonForm";
 
 const loginUserSchema = z.object({
   name: z
@@ -18,11 +21,7 @@ const loginUserSchema = z.object({
 type IUser = z.infer<typeof loginUserSchema>;
 
 const LoginForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IUser>({
+  const loginUserForm = useForm<IUser>({
     resolver: zodResolver(loginUserSchema),
   });
 
@@ -41,25 +40,47 @@ const LoginForm = () => {
       .then((json) => console.log(json));
   }
 
+  const {
+    handleSubmit,
+    formState: { isSubmitting },
+  } = loginUserForm;
+
   return (
     <section className={`${styles.loginContainer} container`}>
       <TitleComponent>
         <img src={assets.decTitlePurple} alt="" /> <h1>LOGAR</h1>
       </TitleComponent>
       <div className={`${styles.containerForm}`}>
-        <form onSubmit={handleSubmit(loginUser)}>
-          <input placeholder="name" type="text" {...register("name")} />
-          {errors.name && <span>{errors.name?.message}</span>}
-          <input
-            placeholder="password"
-            type="password"
-            {...register("password")}
-          />
-          {errors.password && <span>{errors.password?.message}</span>}
+        <div className={styles.imgSection}>
+          <img src={assets.login} alt="" />
+        </div>
+        <div className={styles.formSection}>
+          <FormProvider {...loginUserForm}>
+            <form
+              className={styles.formSectionContainer}
+              onSubmit={handleSubmit(loginUser)}
+            >
+              <div className={styles.formFild}>
+                <LabelForm htmlFor="name">NOME</LabelForm>
+                <InputForm type="text" name="name" />
 
-          <Button background="hsl(268, 56%, 70%)">LOGAR</Button>
-          <Link to="/login/criar">Cadastre-se</Link>
-        </form>
+                <ErrorForm field="name" />
+              </div>
+
+              <div className={styles.formFild}>
+                <LabelForm htmlFor="password">PASSWORD</LabelForm>
+                <InputForm type="password" name="password" />
+
+                <ErrorForm field="password" />
+              </div>
+
+              <ButtonForm background="hsl(268, 56%, 70%)">LOGAR</ButtonForm>
+              <Link className={styles.linkForm} to="/login/criar">
+                não tem uma conta?cadastre-se
+              </Link>
+            </form>
+          </FormProvider>
+        </div>
       </div>
     </section>
   );

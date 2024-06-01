@@ -2,11 +2,14 @@ import React from "react";
 import { assets } from "../../assets/assets";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
+import { UserContext } from "../../Context/UserContext";
 
 const Header = () => {
   const [active, setActive] = React.useState(false);
   const [menuMobile, setmenuMobile] = React.useState(false);
   const [showSubmenu, setShowSubmenu] = React.useState(false);
+
+  const { data } = React.useContext(UserContext);
 
   const handleToggleSubmenu = () => {
     if (active) {
@@ -90,9 +93,15 @@ const Header = () => {
             <Link to="sobre">SOBRE </Link>
           </li>
           <li>
-            <Link className={styles.headerLogin} to="/login">
-              LOGIN <img src={assets.user} alt="" />{" "}
-            </Link>
+            {data ? (
+              <Link to="/" className={styles.headerUser}>
+                <img src={assets.userTest1} alt="" /> {data.name}
+              </Link>
+            ) : (
+              <Link className={styles.headerLogin} to="/login">
+                LOGIN <img src={assets.user} alt="" />{" "}
+              </Link>
+            )}
           </li>
         </ul>
       </nav>

@@ -9,8 +9,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 const InputForm = (props: InputProps) => {
   const { register } = useFormContext();
 
-  console.log(`Registering input: ${props.name}`, register(props.name));
-  console.log("useFormContext output:", useFormContext());
+  // console.log(`Registering input: ${props.name}`, register(props.name));
+  // console.log("useFormContext output:", useFormContext());
 
   return (
     <input

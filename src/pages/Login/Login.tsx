@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import LoginForm from "./LoginForm/LoginForm";
-import LoginCreate from "./LoginCreate";
+import LoginCreate from "./LoginCreate/LoginCreate";
 
 const Login = () => {
   return (

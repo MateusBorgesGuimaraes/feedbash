@@ -103,8 +103,8 @@
   }
 
   .imgSection > img {
-    width: 21.875rem;
-    height: 21.875rem;
+    width: 375px;
+    height: 375px;
   }
 
   .formSectionContainer {

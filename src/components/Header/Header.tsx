@@ -9,7 +9,7 @@ const Header = () => {
   const [menuMobile, setmenuMobile] = React.useState(false);
   const [showSubmenu, setShowSubmenu] = React.useState(false);
 
-  const { data } = React.useContext(UserContext);
+  const { data, userLogout } = React.useContext(UserContext);
 
   const handleToggleSubmenu = () => {
     if (active) {
@@ -95,13 +95,17 @@ const Header = () => {
           <li>
             {data ? (
               <Link to="/" className={styles.headerUser}>
-                <img src={assets.userTest1} alt="" /> {data.name}
+                <img src={data.photoUrl} alt="" /> {data.name}
               </Link>
             ) : (
               <Link className={styles.headerLogin} to="/login">
                 LOGIN <img src={assets.user} alt="" />{" "}
               </Link>
             )}
+          </li>
+
+          <li>
+            <button onClick={userLogout}>SAIR</button>
           </li>
         </ul>
       </nav>

@@ -9,46 +9,42 @@ import InputForm from "../../../components/Form/InputForm/InputForm";
 import LabelForm from "../../../components/Form/LabelForm/LabelForm";
 import ErrorForm from "../../../components/Form/ErrorForm/ErrorForm";
 import ButtonForm from "../../../components/ButtonForm/ButtonForm";
+import useFetch from "../../../Hooks/useFetch";
+import { USER_POST } from "../../../Api";
+import { UserContext } from "../../../Context/UserContext";
+import ErrorGeneral from "../../../components/ErrorGeneral/ErrorGeneral";
 
-const loginUserSchema = z.object({
+const CreateUserSchema = z.object({
   name: z
     .string()
     .min(3, "Nome do usuario é obrigatorio e deve ter mais de 3 letras"),
   email: z
     .string()
-    .min(1, "O Email é obrigatorip")
+    .min(1, "O Email é obrigatorio")
     .email("O formato do email esta incorreto"),
-  password: z.string().min(3, "Senha obrigatoria"),
+  password: z.string().min(3, "Senha obrigatoria e deve ter mais de 3 letras"),
   photoUrl: z.string().min(3, "Foto obrigatoria"),
 });
 
-type IUser = z.infer<typeof loginUserSchema>;
+type IUserCreate = z.infer<typeof CreateUserSchema>;
 
 const LoginCreate = () => {
-  const loginUserForm = useForm<IUser>({
-    resolver: zodResolver(loginUserSchema),
+  const createUserForm = useForm<IUserCreate>({
+    resolver: zodResolver(CreateUserSchema),
   });
+  const { loading, error, request } = useFetch();
+  const { userLogin } = React.useContext(UserContext);
 
-  function loginUser(data: IUser) {
-    // fetch("http://localhost:5000/api/auth/login", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((response) => {
-    //     console.log(response);
-    //     return response.json();
-    //   })
-    //   .then((json) => console.log(json));
-    console.log(data);
+  async function createUser(data: IUserCreate) {
+    const { url, options } = USER_POST(data);
+    const { response } = await request(url, options);
+    if (response && response.ok) userLogin(data);
   }
 
   const {
     handleSubmit,
     formState: { isSubmitting },
-  } = loginUserForm;
+  } = createUserForm;
 
   return (
     <section className={`${styles.loginContainer} container`}>
@@ -60,10 +56,10 @@ const LoginCreate = () => {
           <img src={assets.login} alt="" />
         </div>
         <div className={styles.formSection}>
-          <FormProvider {...loginUserForm}>
+          <FormProvider {...createUserForm}>
             <form
               className={styles.formSectionContainer}
-              onSubmit={handleSubmit(loginUser)}
+              onSubmit={handleSubmit(createUser)}
             >
               <div className={styles.formFild}>
                 <LabelForm htmlFor="name">NOME</LabelForm>
@@ -93,7 +89,16 @@ const LoginCreate = () => {
                 <ErrorForm field="photoUrl" />
               </div>
 
-              <ButtonForm background="hsl(268, 56%, 70%)">CADASTRAR</ButtonForm>
+              {error && <ErrorGeneral error={error} />}
+              {loading ? (
+                <ButtonForm disabled background="hsl(268, 56%, 70%)">
+                  CADASTRANDO...
+                </ButtonForm>
+              ) : (
+                <ButtonForm background="hsl(268, 56%, 70%)">
+                  CADASTRAR
+                </ButtonForm>
+              )}
             </form>
           </FormProvider>
         </div>

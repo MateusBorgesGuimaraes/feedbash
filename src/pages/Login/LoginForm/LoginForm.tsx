@@ -11,12 +11,13 @@ import LabelForm from "../../../components/Form/LabelForm/LabelForm";
 import ErrorForm from "../../../components/Form/ErrorForm/ErrorForm";
 import ButtonForm from "../../../components/ButtonForm/ButtonForm";
 import { UserContext } from "../../../Context/UserContext";
+import ErrorGeneral from "../../../components/ErrorGeneral/ErrorGeneral";
 
 const loginUserSchema = z.object({
   name: z
     .string()
     .min(3, "Nome do usuario é obrigatorio e deve ter mais de 3 letras"),
-  password: z.string().min(3, "Senha obrigatoria"),
+  password: z.string().min(3, "Senha obrigatoria e deve ter mais de 3 letras"),
 });
 
 type IUser = z.infer<typeof loginUserSchema>;
@@ -25,7 +26,7 @@ const LoginForm = () => {
   const loginUserForm = useForm<IUser>({
     resolver: zodResolver(loginUserSchema),
   });
-  const { userLogin } = React.useContext(UserContext);
+  const { userLogin, error, loading } = React.useContext(UserContext);
 
   async function loginUser(data: IUser) {
     userLogin(data);
@@ -64,8 +65,16 @@ const LoginForm = () => {
 
                 <ErrorForm field="password" />
               </div>
+              {error && <ErrorGeneral error={error} />}
 
-              <ButtonForm background="hsl(268, 56%, 70%)">LOGAR</ButtonForm>
+              {loading ? (
+                <ButtonForm disabled background="hsl(268, 56%, 70%)">
+                  CARREGANDO...
+                </ButtonForm>
+              ) : (
+                <ButtonForm background="hsl(268, 56%, 70%)">LOGAR</ButtonForm>
+              )}
+
               <Link className={styles.linkForm} to="/login/criar">
                 não tem uma conta?cadastre-se
               </Link>

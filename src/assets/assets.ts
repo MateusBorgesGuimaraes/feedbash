@@ -37,6 +37,12 @@ import warning from "./icons/warning-icon.svg";
 import warningDarkBlue from "./icons/warning-darkBlue-icon.svg";
 import writeSubmenu from "./icons/write-submenu-icon.svg";
 import hamburgerMenu from "./icons/hamburger-menu-icon.svg";
+import menuPost from "./icons/menuPost.svg";
+import menuReview from "./icons/menuReview.svg";
+import menuSave from "./icons/menuSave.svg";
+import menuLogout from "./icons/menuLogout.svg";
+import home1 from "./icons/home1.svg";
+import home2 from "./icons/home2.svg";
 
 //IMAGES
 
@@ -58,6 +64,12 @@ import write from "./images/write-img.jpg";
 //EXPORTS
 
 export const assets = {
+  home1,
+  home2,
+  menuLogout,
+  menuPost,
+  menuReview,
+  menuSave,
   all,
   hamburgerMenu,
   arrowDownSubMenu,

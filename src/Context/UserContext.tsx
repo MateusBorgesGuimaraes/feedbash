@@ -30,6 +30,7 @@ export const UserStorage = ({ children }: React.PropsWithChildren) => {
       setLoading(false);
       setLogin(false);
       window.localStorage.removeItem("token");
+
       navigate("/login");
     },
     [navigate]

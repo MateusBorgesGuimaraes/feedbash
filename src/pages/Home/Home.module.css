@@ -257,7 +257,7 @@
 
 @media (max-width: 30rem) {
   .categoriesTitle {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   .categoriesTitle > img {
     display: none;
@@ -279,6 +279,18 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+}
+
+@media (max-width: 36.25rem) {
+  .tableTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .tableTitle {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 38.75rem) {

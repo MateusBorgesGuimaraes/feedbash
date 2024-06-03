@@ -44,3 +44,18 @@
 .cardButtonContainer:hover p {
   color: var(--purple-900);
 }
+
+@media (max-width: 30rem) {
+  .cardButtonContainer img {
+    display: block;
+    width: 8.75rem;
+    height: 7.6563rem;
+  }
+
+  .cardButtonContainer p {
+    position: absolute;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}

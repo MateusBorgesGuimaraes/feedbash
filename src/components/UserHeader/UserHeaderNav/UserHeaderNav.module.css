@@ -1,0 +1,63 @@
+.nav {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.nav a,
+.nav button {
+  background: var(--blue-50);
+  border-radius: 0.5rem;
+  height: 3.75rem;
+  width: 3.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 1px solid transparent;
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+.nav svg {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.nav a:hover,
+.nav a:focus,
+.nav button:hover,
+.nav button:focus {
+  background: white;
+  box-shadow: 0 0 0 3px var(--neutral-50);
+  border-color: var(--blue-200);
+  outline: none;
+}
+
+.nav a:global(.active) {
+  background: white;
+  box-shadow: 0 0 0 3px var(--blue-600);
+  border-color: var(--blue-800);
+}
+
+.nav a:global(.active) svg > * {
+  fill: var(--blue-600);
+}
+
+@media (max-width: 25rem) {
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .nav a,
+  .nav button {
+    background: var(--blue-50);
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .nav svg {
+    height: 2rem;
+    width: 2rem;
+  }
+}

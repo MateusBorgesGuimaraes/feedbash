@@ -58,7 +58,7 @@ const Header = () => {
               } ${active ? styles.active : ""}`}
             >
               <li>
-                <Link to="/">
+                <Link to="/posts-page">
                   <img src={assets.all} alt="" />
                   ALL
                 </Link>

@@ -1,0 +1,23 @@
+.postCard {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 2rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 4px 4px hsl(268, 46%, 39%, 20%);
+  gap: 8px;
+}
+
+.postCard > p {
+  color: var(--purple-500);
+  font-weight: 700;
+}
+
+.postCard > p > span {
+  color: var(--purple-800);
+}
+
+.rating {
+  align-self: center;
+  margin: 0.75rem 0px;
+}

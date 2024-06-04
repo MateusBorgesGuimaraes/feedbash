@@ -3,6 +3,7 @@ import styles from "./SinglePost.module.css";
 import { assets } from "../../assets/assets";
 import TitleComponent from "../../components/TitleComponent/TitleComponent";
 import ShowStar from "../../components/ShowStar/ShowStar";
+import Comment from "../../components/Comment/Comment";
 
 const SinglePost = () => {
   return (
@@ -26,7 +27,7 @@ const SinglePost = () => {
           </p>
 
           <a href="https://www.youtube.com/watch?v=yC0JPJ2Uf6k&list=WL&index=7&t=287s">
-            https://www.youtube.com/watch?v=yC0JPJ2Uf6k&list=WL&index=7&t=287s
+            clique aqui para acessar o conteudo
           </a>
         </div>
       </div>
@@ -39,6 +40,16 @@ const SinglePost = () => {
         <div>
           <ShowStar sizeStar="2.5rem" />
           <p>4/5</p>
+        </div>
+      </div>
+
+      <div className={styles.commentsSection}>
+        <h3>AVALIAÇÕES: 3</h3>
+        <div className={styles.comment}>
+          <Comment />
+          <Comment />
+          <Comment />
+          <Comment />
         </div>
       </div>
     </section>

@@ -36,6 +36,8 @@
   font-weight: bold;
   border-radius: 2rem;
   padding: 6px 12px;
+  width: max-content;
+  text-decoration: underline;
 }
 
 .rating {
@@ -70,4 +72,20 @@
   .rating {
     justify-content: center;
   }
+}
+
+.commentsSection {
+  margin-top: 1.5rem;
+}
+
+.commentsSection > h3 {
+  font-size: 1.25rem;
+  color: var(--purple-400);
+}
+
+.comment {
+  margin: 2.5rem 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }

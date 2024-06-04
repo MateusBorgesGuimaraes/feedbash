@@ -1,0 +1,100 @@
+.comment {
+  background: var(--neutral-50);
+  padding: 1.5rem 2rem;
+  box-shadow: 0px 2px 4px hsl(218, 17%, 25%, 20%);
+}
+
+.commentImg > img {
+  width: 3.75rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.commentFirtPart {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.commentRating {
+  background: white;
+  padding: 0.375rem 0.75rem;
+  border-radius: 1.25rem;
+}
+
+.commentHeader {
+  display: flex;
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+}
+
+.commentNome {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.commentNome > p:first-child {
+  color: var(--purple-500);
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.commentNome > p:last-child {
+  color: var(--neutral-200);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.icons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.icons > button > img {
+  min-width: 1.5rem;
+  aspect-ratio: 1;
+}
+
+.icons > button {
+  background: none;
+  border: none;
+}
+
+.commentFooter {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: end;
+}
+
+.commentFooter > button {
+  border: none;
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.75rem;
+  background: var(--purple-700);
+  color: white;
+  font-weight: 500;
+  font-size: 1.25rem;
+  font-family: var(--font-secundary);
+  border-radius: 0.25rem;
+  transition: 0.3s ease-in-out;
+}
+
+.commentFooter > button:hover {
+  background: var(--purple-600);
+}
+
+@media (max-width: 31.25rem) {
+  .commentFirtPart {
+    flex-wrap: wrap;
+  }
+  .icons {
+    align-self: self-start;
+    gap: 0.25rem;
+  }
+}

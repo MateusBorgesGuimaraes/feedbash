@@ -1,6 +1,6 @@
 import React from "react";
 import { assets } from "../../assets/assets";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import { UserContext } from "../../Context/UserContext";
 
@@ -8,6 +8,7 @@ const Header = () => {
   const [active, setActive] = React.useState(false);
   const [menuMobile, setmenuMobile] = React.useState(false);
   const [showSubmenu, setShowSubmenu] = React.useState(false);
+  const location = useLocation();
 
   const { data } = React.useContext(UserContext);
 
@@ -20,6 +21,14 @@ const Header = () => {
       setTimeout(() => setActive(true), 10);
     }
   };
+
+  React.useEffect(() => {
+    function resetaEstado() {
+      setActive(false);
+      setmenuMobile(false);
+    }
+    resetaEstado();
+  }, [location]);
 
   return (
     <header className={styles.headerBg}>

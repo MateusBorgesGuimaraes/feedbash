@@ -6,22 +6,35 @@ const PostsPage = () => {
   return (
     <section className="container">
       <div className={stlyes.postPageGrig}>
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
+        <PostCard link="/post/43242424234" />
       </div>
     </section>
   );

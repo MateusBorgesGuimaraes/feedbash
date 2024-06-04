@@ -5,7 +5,18 @@ import ButtonLinkSmall from "../ButtonLinkSmall/ButtonLinkSmall";
 import { assets } from "../../assets/assets";
 import styles from "./PostCard.module.css";
 
-const PostCard = () => {
+type PostCardProps = {
+  id?: number;
+  title?: string;
+  description?: string;
+  category?: string;
+  focus?: string;
+  ambito?: string;
+  rating?: number;
+  link: string;
+};
+
+const PostCard = ({ link }: PostCardProps) => {
   return (
     <div className={styles.postCard}>
       <p>
@@ -31,7 +42,7 @@ const PostCard = () => {
       <div className={styles.rating}>
         <ShowStar />
       </div>
-      <ButtonLinkSmall link="/" icon={assets.rating}>
+      <ButtonLinkSmall link={link} icon={assets.rating}>
         AVALIAR
       </ButtonLinkSmall>
     </div>

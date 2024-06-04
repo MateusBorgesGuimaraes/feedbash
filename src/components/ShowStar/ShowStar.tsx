@@ -2,7 +2,12 @@ import React from "react";
 import { assets } from "../../assets/assets";
 import styles from "./ShowStar.module.css";
 
-const ShowStar = () => {
+type ShowStarProps = {
+  rating?: number;
+  sizeStar?: string;
+};
+
+const ShowStar = ({ sizeStar = "1.5rem" }: ShowStarProps) => {
   function calcularMediaAvaliacoes(avaliacoes: number[]): number {
     const contagemAvaliacoes = [0, 0, 0, 0, 0];
 
@@ -29,9 +34,23 @@ const ShowStar = () => {
 
   const stars = [0, 1, 2, 3, 4].map((i) => {
     if (i < media) {
-      return <img key={i} src={assets.fullStar} alt="Full Star" />;
+      return (
+        <img
+          style={{ width: sizeStar }}
+          key={i}
+          src={assets.fullStar}
+          alt="Full Star"
+        />
+      );
     } else {
-      return <img key={i} src={assets.emptyStar} alt="Empty Star" />;
+      return (
+        <img
+          style={{ width: sizeStar }}
+          key={i}
+          src={assets.emptyStar}
+          alt="Empty Star"
+        />
+      );
     }
   });
 

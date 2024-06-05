@@ -1,44 +1,52 @@
-import React from "react";
+import React, { useState, useRef, useEffect, FocusEvent } from "react";
 import styles from "./CommentPost.module.css";
 import StarRating from "../StarRating/StarRating";
 
 const CommentPost = () => {
-  const [active, setActive] = React.useState(false);
-  const textareaRef = React.useRef<HTMLTextAreaElement>(null);
+  const [active, setActive] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const adjustTextareaHeight = () => {
     const textarea = textareaRef.current;
     if (textarea) {
       textarea.style.height = "auto";
-      if (textarea.value.trim() === "") {
-        textarea.style.height = "initial";
-      } else {
-        textarea.style.height = `${Math.max(textarea.scrollHeight, 200)}px`;
-      }
+      textarea.style.height =
+        textarea.value.trim() === ""
+          ? "initial"
+          : `${Math.max(textarea.scrollHeight, 200)}px`;
     }
   };
 
   const handleFocus = () => {
     setActive(true);
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = `${Math.max(textarea.scrollHeight, 200)}px`;
-    }
+    adjustTextareaHeight();
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e: FocusEvent<HTMLTextAreaElement>) => {
+    if (
+      e.relatedTarget &&
+      (e.relatedTarget as Element).closest(`.${styles.starRating}`)
+    ) {
+      return;
+    }
     const textarea = textareaRef.current;
     if (textarea) {
       if (textarea.value.trim() === "") {
         textarea.style.height = "initial";
+        setActive(false);
       } else {
         adjustTextareaHeight();
       }
     }
-    setActive(false);
   };
 
-  React.useEffect(() => {
+  const handleStarClick = () => {
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  };
+
+  useEffect(() => {
     adjustTextareaHeight();
   }, []);
 
@@ -50,11 +58,17 @@ const CommentPost = () => {
         onFocus={handleFocus}
         onBlur={handleBlur}
         onInput={adjustTextareaHeight}
-        name=""
-        id=""
       ></textarea>
-      <StarRating />
-      {active && <button>POSTAR</button>}
+      {(active ||
+        (textareaRef.current && textareaRef.current.value.trim() !== "")) && (
+        <div onMouseDown={handleStarClick} className={styles.starRating}>
+          <StarRating />
+        </div>
+      )}
+      {(active ||
+        (textareaRef.current && textareaRef.current.value.trim() !== "")) && (
+        <button>POSTAR</button>
+      )}
     </form>
   );
 };

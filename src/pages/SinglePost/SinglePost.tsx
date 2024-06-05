@@ -4,6 +4,7 @@ import { assets } from "../../assets/assets";
 import TitleComponent from "../../components/TitleComponent/TitleComponent";
 import ShowStar from "../../components/ShowStar/ShowStar";
 import Comment from "../../components/Comment/Comment";
+import CommentPost from "../../components/CommentPost/CommentPost";
 
 const SinglePost = () => {
   return (
@@ -46,6 +47,7 @@ const SinglePost = () => {
       <div className={styles.commentsSection}>
         <h3>AVALIAÇÕES: 3</h3>
         <div className={styles.comment}>
+          <CommentPost />
           <Comment />
           <Comment />
           <Comment />

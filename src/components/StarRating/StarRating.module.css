@@ -1,0 +1,24 @@
+.starRating {
+  display: flex;
+  align-items: center;
+}
+
+.starRating > button {
+  margin: 0px 0.25rem;
+  padding: 0px;
+  border: none;
+  background: none;
+}
+
+.starRating > button.active > svg > path {
+  fill: hsl(49, 91%, 55%);
+}
+
+.starRating > button > svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.starRating > button > svg > path:hover {
+  fill: hsl(49, 91%, 55%);
+}

@@ -98,3 +98,9 @@ p {
     margin: 0 1rem;
   }
 }
+
+@media (max-width: 31.25rem) {
+  .container {
+    margin: 0px 0.5rem;
+  }
+}

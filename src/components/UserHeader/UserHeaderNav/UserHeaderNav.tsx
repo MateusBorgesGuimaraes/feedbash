@@ -6,6 +6,7 @@ import Post from "../../../assets/icons/menuPost.svg?react";
 import Logout from "../../../assets/icons/menuLogout.svg?react";
 import Review from "../../../assets/icons/menuReview.svg?react";
 import Save from "../../../assets/icons/menuSave.svg?react";
+import Add from "../../../assets/icons/add-post.svg?react";
 import styles from "./UserHeaderNav.module.css";
 
 const UserHeaderNav = () => {
@@ -14,6 +15,9 @@ const UserHeaderNav = () => {
     <nav className={styles.nav}>
       <NavLink to="/conta" end>
         <Home />
+      </NavLink>
+      <NavLink to="/conta/add-post">
+        <Add />
       </NavLink>
       <NavLink to="/conta/posts">
         <Post />

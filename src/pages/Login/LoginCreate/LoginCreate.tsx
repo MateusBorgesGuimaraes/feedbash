@@ -23,7 +23,7 @@ const CreateUserSchema = z.object({
     .min(1, "O Email é obrigatorio")
     .email("O formato do email esta incorreto"),
   password: z.string().min(3, "Senha obrigatoria e deve ter mais de 3 letras"),
-  photoUrl: z.string().min(3, "Foto obrigatoria"),
+  photoUrl: z.string().optional(),
 });
 
 type IUserCreate = z.infer<typeof CreateUserSchema>;
@@ -32,10 +32,14 @@ const LoginCreate = () => {
   const createUserForm = useForm<IUserCreate>({
     resolver: zodResolver(CreateUserSchema),
   });
+
   const { loading, error, request } = useFetch();
   const { userLogin } = React.useContext(UserContext);
 
   async function createUser(data: IUserCreate) {
+    if (!data.photoUrl) {
+      data.photoUrl = "https://i.imgur.com/qh2hZjV.jpeg";
+    }
     const { url, options } = USER_POST(data);
     const { response } = await request(url, options);
     if (response && response.ok) userLogin(data);

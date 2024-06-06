@@ -2,21 +2,29 @@ import React, { InputHTMLAttributes } from "react";
 import { useFormContext } from "react-hook-form";
 import styles from "./InputForm.module.css";
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+type InputProps = React.ComponentProps<"input"> & {
   name: string;
-}
+  newColor?: string;
+  newBorder?: string;
+};
 
-const InputForm = (props: InputProps) => {
+const InputForm = ({
+  name,
+  newColor = "var(--purple-800)",
+  newBorder = "var(--purple-300)",
+  ...props
+}: InputProps) => {
   const { register } = useFormContext();
-
-  // console.log(`Registering input: ${props.name}`, register(props.name));
-  // console.log("useFormContext output:", useFormContext());
 
   return (
     <input
-      id={props.name}
+      style={{
+        color: newColor,
+        borderLeftColor: newBorder,
+      }}
+      id={name}
       className={styles.inputForm}
-      {...register(props.name)}
+      {...register(name)}
       {...props}
     />
   );

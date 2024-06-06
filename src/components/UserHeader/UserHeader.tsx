@@ -12,6 +12,9 @@ const UserHeader = () => {
   const location = useLocation();
   React.useEffect(() => {
     switch (location.pathname) {
+      case "/conta/add-post":
+        setTitle("Adicionar Post");
+        break;
       case "/conta/posts":
         setTitle("Meus Posts");
         break;

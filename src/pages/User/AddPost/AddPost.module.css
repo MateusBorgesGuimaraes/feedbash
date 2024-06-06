@@ -1,0 +1,87 @@
+.loginContainer {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.containerForm {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-bottom: 2.5rem;
+  box-shadow: 4px 4px hsl(218, 82%, 24%, 20%);
+  border-radius: 0.5rem;
+}
+
+.imgSection {
+  grid-column: 1/6;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 0px;
+  border-radius: 8px 0px 0px 8px;
+}
+
+.imgSection > img {
+  width: 25rem;
+  height: 25rem;
+}
+
+.formSection {
+  grid-column: 6/-1;
+  border-radius: 0px 8px 8px 0px;
+  background: linear-gradient(var(--blue-400), var(--blue-600));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 0rem;
+}
+
+.formSectionContainer {
+  position: relative;
+  width: 100%;
+  padding: 0px 2.5rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formFild {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.formFild:last-of-type {
+  align-self: self-start;
+}
+
+.formSectionContainer button {
+  align-self: flex-end;
+}
+
+.selectAdd {
+  padding: 4px 6px;
+  border-radius: 0.25rem;
+  font-weight: 600;
+}
+
+@media (max-width: 56.25rem) {
+  .imgSection {
+    display: none;
+  }
+
+  .formSection {
+    grid-column: 1/-1;
+    border-radius: 0.5rem;
+  }
+}
+
+@media (max-width: 31.25rem) {
+  .formSectionContainer {
+    padding: 0px 1rem;
+    gap: 1rem;
+  }
+}

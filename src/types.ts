@@ -18,3 +18,16 @@ export type LoginInterface = {
   name: string;
   password: string;
 };
+
+export type PostInterface = {
+  name: string;
+  author: string;
+  focus: string;
+  scope: string;
+  link: string;
+  // authorId: string;
+  category: "video" | "art" | "photo" | "writing";
+  rating?: 1 | 2 | 3 | 4 | 5;
+  createdAt?: Date;
+  updatedAt?: Date;
+};

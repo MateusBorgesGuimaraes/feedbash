@@ -26,6 +26,7 @@ const Header = () => {
     function resetaEstado() {
       setActive(false);
       setmenuMobile(false);
+      setShowSubmenu(false);
     }
     resetaEstado();
   }, [location]);

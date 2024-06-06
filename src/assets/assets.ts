@@ -30,6 +30,7 @@ import supriseEmoji from "./icons/surprise-emoji-face-icon.svg";
 import thinkingEmoji from "./icons/thiking-emoji-face-icon.svg";
 import twoStarDec from "./icons/two-start-dec-icon.svg";
 import unsave from "./icons/unsave-icon.svg";
+import unsavePurple from "./icons/unsave-purple-icon.svg";
 import user from "./icons/user-icon.svg";
 import users from "./icons/users-icon.svg";
 import videoSubmenu from "./icons/video-submenu-icon.svg";
@@ -64,6 +65,7 @@ import write from "./images/write-img.jpg";
 //EXPORTS
 
 export const assets = {
+  unsavePurple,
   home1,
   home2,
   menuLogout,

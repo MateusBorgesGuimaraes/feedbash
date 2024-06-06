@@ -50,3 +50,17 @@ export function USER_POST<T>(body: T) {
     },
   };
 }
+
+export function POST_POST<T>(body: T, token: string) {
+  return {
+    url: API_URL + "/posts",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

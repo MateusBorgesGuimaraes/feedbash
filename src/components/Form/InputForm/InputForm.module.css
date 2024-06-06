@@ -6,5 +6,5 @@
   font-size: 1rem;
   font-family: var(--font-secundary);
   color: var(--purple-800);
-  border-left: 0.25rem solid var(--purple-300);
+  border-left: 0.25rem solid transparent;
 }

@@ -1,6 +1,6 @@
 .nav {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 1rem;
 }
 
@@ -44,7 +44,7 @@
   fill: var(--blue-600);
 }
 
-@media (max-width: 25rem) {
+@media (max-width: 31.25rem) {
   .nav {
     display: flex;
     flex-wrap: wrap;

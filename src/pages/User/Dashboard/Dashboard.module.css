@@ -4,6 +4,8 @@
   gap: 2.5rem;
 }
 
-.dashboardContent {
-  /* background: red; */
+@media (max-width: 37.5rem) {
+  .dashboardLayout {
+    gap: 1.5rem;
+  }
 }

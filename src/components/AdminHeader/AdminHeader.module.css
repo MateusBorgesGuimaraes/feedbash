@@ -35,7 +35,7 @@
 }
 
 .navAdmin a:global(.active) svg > * {
-  fill: var(--blue-600);
+  fill: var(--purple-600);
 }
 
 .navAdmin a p {
@@ -69,5 +69,11 @@
 
   .navAdmin a p {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 31.25rem) {
+  .expand {
+    display: none;
   }
 }

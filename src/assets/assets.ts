@@ -35,7 +35,7 @@ import user from "./icons/user-icon.svg";
 import users from "./icons/users-icon.svg";
 import videoSubmenu from "./icons/video-submenu-icon.svg";
 import warning from "./icons/warning-icon.svg";
-import warningDarkBlue from "./icons/warning-darkBlue-icon.svg";
+import warningDarkPurple from "./icons/warning-darkPurple-icon.svg";
 import writeSubmenu from "./icons/write-submenu-icon.svg";
 import hamburgerMenu from "./icons/hamburger-menu-icon.svg";
 import menuPost from "./icons/menuPost.svg";
@@ -107,7 +107,7 @@ export const assets = {
   users,
   videoSubmenu,
   warning,
-  warningDarkBlue,
+  warningDarkPurple,
   writeSubmenu,
   addPost,
   art,

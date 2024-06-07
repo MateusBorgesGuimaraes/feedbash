@@ -9,14 +9,7 @@ import styles from "../User.module.css";
 const Posts = () => {
   return (
     <div className={styles.tableContainer}>
-      <TableComponent
-        caption="historico"
-        tableColor="var(--white-ice)"
-        captionColor="var(--purple-300)"
-        headerColor="var(--purple-200)"
-        headerTextColor="var(--purple-900)"
-        bodyTextColor="var(--purple-700)"
-      >
+      <TableComponent caption="historico">
         <tr>
           <th>link</th>
           <th>âmbito</th>

@@ -85,14 +85,7 @@ const Home = () => {
             <img src={assets.twoStarDec} alt="" />
           </div>
 
-          <TableComponent
-            caption="recentes..."
-            tableColor="var(--white-ice)"
-            captionColor="var(--purple-300)"
-            headerColor="var(--purple-200)"
-            headerTextColor="var(--purple-900)"
-            bodyTextColor="var(--purple-700)"
-          >
+          <TableComponent caption="recentes...">
             <tr>
               <th>link</th>
               <th>autor</th>

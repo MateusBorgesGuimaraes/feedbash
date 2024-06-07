@@ -24,8 +24,17 @@ const UserHeader = () => {
       case "/conta/save-reviews":
         setTitle("Reviews Salvas");
         break;
+      case "/conta/dashboard":
+        setTitle("Dashboard Inicio");
+        break;
+      case "/conta/dashboard/reports":
+        setTitle("Reports");
+        break;
+      case "/conta/dashboard/users":
+        setTitle("Usuários");
+        break;
       default:
-        setTitle("Minha Conta"); // ou um valor padrão adequado
+        setTitle("Minha Conta");
         break;
     }
   }, [location]);

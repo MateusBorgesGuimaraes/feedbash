@@ -1,0 +1,73 @@
+.headerContainer {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  gap: 2.5rem;
+  box-shadow: 6px 0 8px -4px hsl(219, 81%, 31%, 20%);
+  border-radius: 4px;
+  align-items: center;
+}
+
+.expand {
+  border: none;
+  background: none;
+  margin-right: 6px;
+}
+
+.navAdmin {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.navAdmin a {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px;
+}
+
+.navAdmin.active a {
+  border-bottom: 2px solid var(--blue-50);
+}
+
+.navAdmin a:global(.active) svg > * {
+  fill: var(--blue-600);
+}
+
+.navAdmin a p {
+  display: none;
+  font-size: 18px;
+  color: var(--blue-800);
+  font-weight: 700;
+}
+
+.navAdmin a svg {
+  justify-self: self-end;
+}
+
+.navAdmin a p.active {
+  display: initial;
+}
+
+@media (max-width: 47.5rem) {
+  .headerContainer {
+    padding: 1rem 0.5rem;
+    gap: 2rem;
+  }
+
+  .navAdmin {
+    gap: 1.5rem;
+  }
+
+  .navAdmin a {
+    gap: 6px;
+  }
+
+  .navAdmin a p {
+    font-size: 16px;
+  }
+}

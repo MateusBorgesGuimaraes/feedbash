@@ -4,6 +4,12 @@
   gap: 1rem;
 }
 
+.navAdmin {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+}
+
 .nav a,
 .nav button {
   background: var(--blue-50);
@@ -44,14 +50,16 @@
   fill: var(--blue-600);
 }
 
-@media (max-width: 31.25rem) {
+@media (max-width: 37.5rem) {
   .nav {
     display: flex;
     flex-wrap: wrap;
   }
+}
+
+@media (max-width: 25rem) {
   .nav a,
   .nav button {
-    background: var(--blue-50);
     height: 3rem;
     width: 3rem;
   }

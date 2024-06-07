@@ -7,12 +7,13 @@ import Logout from "../../../assets/icons/menuLogout.svg?react";
 import Review from "../../../assets/icons/menuReview.svg?react";
 import Save from "../../../assets/icons/menuSave.svg?react";
 import Add from "../../../assets/icons/add-post.svg?react";
+import Dashboard from "../../../assets/icons/dashboard-icon.svg?react";
 import styles from "./UserHeaderNav.module.css";
 
 const UserHeaderNav = () => {
-  const { userLogout } = React.useContext(UserContext);
+  const { admin, userLogout } = React.useContext(UserContext);
   return (
-    <nav className={styles.nav}>
+    <nav className={`${styles.nav} ${admin && styles.navAdmin}`}>
       <NavLink to="/conta" end>
         <Home />
       </NavLink>
@@ -28,6 +29,12 @@ const UserHeaderNav = () => {
       <NavLink to="/conta/save-reviews">
         <Save />
       </NavLink>
+      {admin && (
+        <NavLink to="/conta/dashboard">
+          <Dashboard />
+        </NavLink>
+      )}
+
       <button onClick={userLogout}>
         <Logout />
       </button>

@@ -10,6 +10,7 @@ type StorageInterface = {
   login: boolean;
   loading: boolean;
   error: string | null;
+  admin: boolean;
 };
 
 export const UserContext = React.createContext<StorageInterface>(
@@ -21,6 +22,7 @@ export const UserStorage = ({ children }: React.PropsWithChildren) => {
   const [login, setLogin] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const [admin, setAdmin] = React.useState(false);
   const navigate = useNavigate();
 
   const userLogout = React.useCallback(
@@ -29,6 +31,7 @@ export const UserStorage = ({ children }: React.PropsWithChildren) => {
       setError(null);
       setLoading(false);
       setLogin(false);
+      setAdmin(false);
       window.localStorage.removeItem("token");
 
       navigate("/login");
@@ -41,6 +44,7 @@ export const UserStorage = ({ children }: React.PropsWithChildren) => {
     const response = await fetch(url, options);
     const json = await response.json();
     setData(json);
+    if (json?.isAdmin) setAdmin(true);
     setLogin(true);
   }
 
@@ -88,7 +92,7 @@ export const UserStorage = ({ children }: React.PropsWithChildren) => {
 
   return (
     <UserContext.Provider
-      value={{ userLogin, data, userLogout, error, loading, login }}
+      value={{ userLogin, data, userLogout, error, loading, login, admin }}
     >
       {children}
     </UserContext.Provider>

@@ -1,0 +1,9 @@
+.dashboardLayout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2.5rem;
+}
+
+.dashboardContent {
+  /* background: red; */
+}

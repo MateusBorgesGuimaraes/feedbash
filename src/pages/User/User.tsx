@@ -6,6 +6,7 @@ import UserMenu from "./UserMenu/UserMenu";
 import MyReviews from "./MyReviews/MyReviews";
 import SaveReviews from "./SaveReviews/SaveReviews";
 import AddPost from "./AddPost/AddPost";
+import Dashboard from "./Dashboard/Dashboard";
 
 const User = () => {
   return (
@@ -17,6 +18,7 @@ const User = () => {
         <Route path="posts" element={<Posts />} />
         <Route path="my-reviews" element={<MyReviews />} />
         <Route path="save-reviews" element={<SaveReviews />} />
+        <Route path="dashboard/*" element={<Dashboard />} />
       </Routes>
     </section>
   );

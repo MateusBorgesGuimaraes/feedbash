@@ -3,43 +3,47 @@ import { assets } from "../../assets/assets";
 import styles from "./ShowStar.module.css";
 
 type ShowStarProps = {
-  rating?: number;
+  rating: number | number[];
   sizeStar?: string;
 };
 
-const ShowStar = ({ sizeStar = "1.5rem" }: ShowStarProps) => {
+const ShowStar = ({ sizeStar = "1.5rem", rating }: ShowStarProps) => {
   function calcularMediaAvaliacoes(avaliacoes: number[]): number {
-    const contagemAvaliacoes = [0, 0, 0, 0, 0];
-
-    avaliacoes.forEach((estrelas) => {
-      if (estrelas >= 1 && estrelas <= 5) {
-        contagemAvaliacoes[estrelas - 1]++;
-      }
-    });
-
-    let totalPontos = 0;
-    let totalAvaliacoes = 0;
-    for (let i = 0; i < contagemAvaliacoes.length; i++) {
-      totalPontos += contagemAvaliacoes[i] * (i + 1);
-      totalAvaliacoes += contagemAvaliacoes[i];
-    }
-
-    return totalAvaliacoes === 0 ? 0 : totalPontos / totalAvaliacoes;
+    const totalPontos = avaliacoes.reduce(
+      (total, avaliacao) => total + avaliacao,
+      0
+    );
+    return avaliacoes.length === 0 ? 0 : totalPontos / avaliacoes.length;
   }
-  const avaliacoes = [
-    1, 2, 3, 4, 5, 5, 4, 3, 2, 5, 4, 4, 5, 3, 2, 1, 5, 5, 4, 3,
-  ];
 
-  const media = calcularMediaAvaliacoes(avaliacoes);
+  let media: number;
+
+  if (Array.isArray(rating)) {
+    media = calcularMediaAvaliacoes(rating);
+  } else {
+    media = rating;
+  }
+
+  const fullStars = Math.floor(media);
+  const halfStar = media - fullStars >= 0.5;
 
   const stars = [0, 1, 2, 3, 4].map((i) => {
-    if (i < media) {
+    if (i < fullStars) {
       return (
         <img
           style={{ width: sizeStar }}
           key={i}
           src={assets.fullStar}
           alt="Full Star"
+        />
+      );
+    } else if (i === fullStars && halfStar) {
+      return (
+        <img
+          style={{ width: sizeStar }}
+          key={i}
+          src={assets.halfStar}
+          alt="Half Star"
         />
       );
     } else {

@@ -31,3 +31,16 @@ export type PostInterface = {
   createdAt?: Date;
   updatedAt?: Date;
 };
+
+export type CommentInterface = {
+  _id?: string;
+  author: string;
+  comment: string;
+  postId: string;
+  authorId?: string;
+  reports?: string[];
+  photoUrl?: string;
+  rating?: 1 | 2 | 3 | 4 | 5;
+  createdAt?: string;
+  updatedAt?: Date;
+};

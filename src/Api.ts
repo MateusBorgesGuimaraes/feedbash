@@ -82,3 +82,26 @@ export function GET_POST(id: string) {
     },
   };
 }
+
+export function POST_COMMENT<T>(token: string, body: T) {
+  return {
+    url: API_URL + "/comments",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function GET_COMMENTS_POST(id: string) {
+  return {
+    url: API_URL + "/comments/post/" + id,
+    options: {
+      method: "GET",
+    },
+  };
+}

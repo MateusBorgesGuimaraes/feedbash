@@ -2,16 +2,23 @@ import React from "react";
 import styles from "./StarRating.module.css";
 import EmptyStar from "../../assets/icons/empty-star-icon.svg?react";
 
-const StarRating = () => {
+type StarRatingProps = {
+  onRatingChange: (rating: number) => void;
+};
+
+const StarRating = ({ onRatingChange }: StarRatingProps) => {
   const [value, setValue] = React.useState(0);
 
   function setColor(newValue: number) {
     if (newValue === value) {
       setValue(0);
+      onRatingChange(0);
     } else {
       setValue(newValue);
+      onRatingChange(newValue);
     }
   }
+
   return (
     <div className={styles.starRating}>
       <button

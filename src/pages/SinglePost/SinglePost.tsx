@@ -6,12 +6,16 @@ import ShowStar from "../../components/ShowStar/ShowStar";
 import Comment from "../../components/Comment/Comment";
 import CommentPost from "../../components/CommentPost/CommentPost";
 import { useParams } from "react-router-dom";
-import { PostInterface } from "../../types";
+import { CommentInterface, PostInterface } from "../../types";
 import useFetch from "../../Hooks/useFetch";
-import { GET_POST } from "../../Api";
+import { GET_COMMENTS_POST, GET_POST } from "../../Api";
+import { number } from "prop-types";
 
 const SinglePost = () => {
   const [post, setPost] = React.useState<PostInterface | null>(null);
+  const [comments, setComments] = React.useState<CommentInterface[] | null>(
+    null
+  );
   const [image, setImage] = React.useState("");
   const { request } = useFetch();
   const { id } = useParams();
@@ -29,6 +33,23 @@ const SinglePost = () => {
     }
     fetchPost();
   }, [request, id]);
+
+  React.useEffect(() => {
+    async function getComment() {
+      if (!id) return;
+      const { url, options } = GET_COMMENTS_POST(id);
+      const { response, json } = await request(url, options);
+
+      if (response && response.ok) {
+        setComments(json);
+      } else {
+        console.error(json);
+      }
+    }
+    getComment();
+  }, [id, request]);
+
+  const avaliacoes = comments?.map((comment) => comment.rating).filter(Number);
 
   React.useEffect(() => {
     if (post) {
@@ -86,7 +107,9 @@ const SinglePost = () => {
         </TitleComponent>
 
         <div>
-          <ShowStar sizeStar="2.5rem" />
+          {avaliacoes && (
+            <ShowStar rating={avaliacoes as number[]} sizeStar="2.5rem" />
+          )}
           <p>4/5</p>
         </div>
       </div>
@@ -94,11 +117,24 @@ const SinglePost = () => {
       <div className={styles.commentsSection}>
         <h3>AVALIAÇÕES: 3</h3>
         <div className={styles.comment}>
-          <CommentPost />
+          {id && <CommentPost id={id} />}
+          {comments?.map((comment) => (
+            <Comment
+              key={comment._id}
+              photoUrl={comment.photoUrl}
+              author={comment.author}
+              rating={comment.rating ? comment.rating : 0}
+              userId={comment._id ? comment._id : ""}
+              postId={id ? id : ""}
+              comment={comment.comment}
+              createdAt={comment.createdAt ? comment.createdAt : ""}
+            />
+          ))}
+
+          {/* <Comment />
           <Comment />
           <Comment />
-          <Comment />
-          <Comment />
+          <Comment /> */}
         </div>
       </div>
     </section>

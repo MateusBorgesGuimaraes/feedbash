@@ -5,31 +5,78 @@ import TitleComponent from "../../components/TitleComponent/TitleComponent";
 import ShowStar from "../../components/ShowStar/ShowStar";
 import Comment from "../../components/Comment/Comment";
 import CommentPost from "../../components/CommentPost/CommentPost";
+import { useParams } from "react-router-dom";
+import { PostInterface } from "../../types";
+import useFetch from "../../Hooks/useFetch";
+import { GET_POST } from "../../Api";
 
 const SinglePost = () => {
+  const [post, setPost] = React.useState<PostInterface | null>(null);
+  const [image, setImage] = React.useState("");
+  const { request } = useFetch();
+  const { id } = useParams();
+
+  React.useEffect(() => {
+    async function fetchPost() {
+      if (!id) return;
+      const { url, options } = GET_POST(id);
+      const { response, json } = await request(url, options);
+      if (response && response.ok) {
+        setPost(json);
+      } else {
+        console.error(json);
+      }
+    }
+    fetchPost();
+  }, [request, id]);
+
+  React.useEffect(() => {
+    if (post) {
+      defineImg(post.category);
+    }
+  }, [post]);
+
+  function defineImg(category: string) {
+    switch (category) {
+      case "video":
+        setImage(assets.videos);
+        break;
+      case "art":
+        setImage(assets.art);
+        break;
+      case "writing":
+        setImage(assets.write);
+        break;
+      case "photo":
+        setImage(assets.photo);
+        break;
+      default:
+        setImage(assets.userTest1);
+        break;
+    }
+  }
+
   return (
     <section className="container">
       <div className={styles.postHeaderLayout}>
         <div>
-          <img src={assets.userTest1} alt="" />
+          <img src={image} alt="" />
         </div>
         <div className={styles.postHeader}>
           <p>
-            <span>Nome autor(a):</span>Lua Riad Suvan
+            <span>Nome autor(a):</span> {post?.author}
           </p>
           <p>
-            <span>Categoria:</span>Video
+            <span>Categoria:</span> {post?.category}
           </p>
           <p>
-            <span>Foco da analise:</span>Som do video no ambiente
+            <span>Foco da analise:</span> {post?.focus}
           </p>
           <p>
-            <span>Ambito:</span>Educacional
+            <span>Ambito:</span> {post?.scope}
           </p>
 
-          <a href="https://www.youtube.com/watch?v=yC0JPJ2Uf6k&list=WL&index=7&t=287s">
-            clique aqui para acessar o conteudo
-          </a>
+          <a href={post?.link}>clique aqui para acessar o conteudo</a>
         </div>
       </div>
 

@@ -25,7 +25,7 @@ export type PostInterface = {
   focus: string;
   scope: string;
   link: string;
-  // authorId: string;
+  _id: string;
   category: "video" | "art" | "photo" | "writing";
   rating?: 1 | 2 | 3 | 4 | 5;
   createdAt?: Date;

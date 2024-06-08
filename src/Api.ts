@@ -64,3 +64,21 @@ export function POST_POST<T>(body: T, token: string) {
     },
   };
 }
+
+export function GET_ALL_POSTS() {
+  return {
+    url: API_URL + "/posts",
+    options: {
+      method: "GET",
+    },
+  };
+}
+
+export function GET_POST(id: string) {
+  return {
+    url: API_URL + "/posts/find/" + id,
+    options: {
+      method: "GET",
+    },
+  };
+}

@@ -6,43 +6,49 @@ import { assets } from "../../assets/assets";
 import styles from "./PostCard.module.css";
 
 type PostCardProps = {
-  id?: number;
-  title?: string;
-  description?: string;
+  id?: string;
+  name?: string;
+  author?: string;
   category?: string;
   focus?: string;
-  ambito?: string;
+  scope?: string;
   rating?: number;
-  link: string;
 };
 
-const PostCard = ({ link }: PostCardProps) => {
+const PostCard = ({
+  category,
+  focus,
+  scope,
+  id,
+  author,
+  name,
+}: PostCardProps) => {
   return (
     <div className={styles.postCard}>
       <p>
         <span>autor(a): </span>
-        Lua Carine Osner
+        {author}
       </p>
       <p>
         <span>post: </span>
-        Video aula
+        {name}
       </p>
       <p>
         <span>categoria: </span>
-        Video
+        {category}
       </p>
       <p>
         <span>foco: </span>
-        Som
+        {focus}
       </p>
       <p>
         <span>ambito: </span>
-        Educacional
+        {scope}
       </p>
       <div className={styles.rating}>
         <ShowStar />
       </div>
-      <ButtonLinkSmall link={link} icon={assets.rating}>
+      <ButtonLinkSmall link={`/post/${id}`} icon={assets.rating}>
         AVALIAR
       </ButtonLinkSmall>
     </div>

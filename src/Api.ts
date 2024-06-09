@@ -123,3 +123,31 @@ export function GET_POSTS_BY_CATEGORY(id: string) {
     },
   };
 }
+
+export function SAVE_COMMENT_POST<T>(token: string, body: T) {
+  return {
+    url: API_URL + "/comments/save",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}
+
+export function UNSAVE_COMMENT_POST<T>(token: string, body: T) {
+  return {
+    url: API_URL + "/comments/unsave",
+    options: {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify(body),
+    },
+  };
+}

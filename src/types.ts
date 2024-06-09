@@ -1,6 +1,6 @@
 export type SavedCommentInterface = {
-  commentId: string;
   postId: string;
+  commentId: string;
 };
 
 export type UserInterface = {
@@ -39,7 +39,7 @@ export type CommentInterface = {
   author: string;
   comment: string;
   postId: string;
-  authorId?: string;
+  authorId: string;
   reports?: string[];
   photoUrl?: string;
   rating: 1 | 2 | 3 | 4 | 5;

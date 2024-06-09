@@ -158,6 +158,8 @@ const SinglePost = () => {
             .map((comment) => (
               <Comment
                 key={comment._id}
+                authorId={comment.authorId}
+                commentId={comment._id}
                 photoUrl={comment.photoUrl}
                 author={comment.author}
                 rating={comment.rating ? comment.rating : 0}

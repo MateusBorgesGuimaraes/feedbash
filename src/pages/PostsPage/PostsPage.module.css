@@ -1,6 +1,5 @@
 .postPageGrig {
   display: grid;
-  /* grid-template-columns: repeat(4, 17.5rem); */
   grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
   gap: 1.25rem;
   margin: 40px 0px;

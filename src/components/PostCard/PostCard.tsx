@@ -1,6 +1,4 @@
 import React from "react";
-import ShowStar from "../ShowStar/ShowStar";
-import Button from "../Button/Button";
 import ButtonLinkSmall from "../ButtonLinkSmall/ButtonLinkSmall";
 import { assets } from "../../assets/assets";
 import styles from "./PostCard.module.css";
@@ -45,9 +43,7 @@ const PostCard = ({
         <span>ambito: </span>
         {scope}
       </p>
-      <div className={styles.rating}>
-        <ShowStar />
-      </div>
+
       <ButtonLinkSmall link={`/post/${id}`} icon={assets.rating}>
         AVALIAR
       </ButtonLinkSmall>

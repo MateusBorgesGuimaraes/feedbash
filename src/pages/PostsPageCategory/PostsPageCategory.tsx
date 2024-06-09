@@ -1,17 +1,20 @@
 import React from "react";
-import stlyes from "./PostsPage.module.css";
+import stlyes from "./PostsPageCategory.module.css";
 import PostCard from "../../components/PostCard/PostCard";
 import { PostInterface } from "../../types";
 import useFetch from "../../Hooks/useFetch";
-import { GET_ALL_POSTS } from "../../Api";
+import { GET_ALL_POSTS, GET_POSTS_BY_CATEGORY } from "../../Api";
+import { useParams } from "react-router-dom";
 
-const PostsPage = () => {
+const PostsPageCategory = () => {
   const [posts, setPosts] = React.useState<PostInterface[] | null>(null);
   const { request } = useFetch();
+  const { id } = useParams();
 
   React.useEffect(() => {
     async function fetchPosts() {
-      const { url, options } = GET_ALL_POSTS();
+      if (!id) return;
+      const { url, options } = GET_POSTS_BY_CATEGORY(id);
       const { response, json } = await request(url, options);
       if (response && response.ok) {
         setPosts(json);
@@ -20,7 +23,7 @@ const PostsPage = () => {
       }
     }
     fetchPosts();
-  }, [request]);
+  }, [request, id]);
 
   return (
     <section className="container">
@@ -42,4 +45,4 @@ const PostsPage = () => {
   );
 };
 
-export default PostsPage;
+export default PostsPageCategory;

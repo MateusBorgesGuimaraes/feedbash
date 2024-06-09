@@ -9,6 +9,7 @@ import User from "./pages/User/User";
 import ProtectedRoute from "./components/Helper/ProtectedRoute";
 import PostsPage from "./pages/PostsPage/PostsPage";
 import SinglePost from "./pages/SinglePost/SinglePost";
+import PostsPageCategory from "./pages/PostsPageCategory/PostsPageCategory";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="login/*" element={<Login />} />
-            <Route path="posts-page/*" element={<PostsPage />} />
+            <Route path="posts-page/" element={<PostsPage />} />
+            <Route path="posts/:id" element={<PostsPageCategory />} />
             <Route path="post/:id" element={<SinglePost />} />
             <Route
               path="conta/*"

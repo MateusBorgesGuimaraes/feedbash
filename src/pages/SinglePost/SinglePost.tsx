@@ -6,16 +6,22 @@ import ShowStar from "../../components/ShowStar/ShowStar";
 import Comment from "../../components/Comment/Comment";
 import CommentPost from "../../components/CommentPost/CommentPost";
 import { useParams } from "react-router-dom";
-import { CommentInterface, PostInterface } from "../../types";
+import {
+  CommentInterface,
+  PostInterface,
+  formatarDatasComentarios,
+} from "../../types";
 import useFetch from "../../Hooks/useFetch";
 import { GET_COMMENTS_POST, GET_POST } from "../../Api";
-import { number } from "prop-types";
+import { UserContext } from "../../Context/UserContext";
 
 const SinglePost = () => {
   const [post, setPost] = React.useState<PostInterface | null>(null);
   const [comments, setComments] = React.useState<CommentInterface[] | null>(
     null
   );
+  const { data } = React.useContext(UserContext);
+  const [averageRating, setAverageRating] = React.useState<number | null>(null);
   const [image, setImage] = React.useState("");
   const { request } = useFetch();
   const { id } = useParams();
@@ -51,6 +57,22 @@ const SinglePost = () => {
 
   const avaliacoes = comments?.map((comment) => comment.rating).filter(Number);
 
+  const exiteEm = comments?.some((comment) => comment.authorId === data?._id);
+
+  const userPost = data?._id === post?.authorId;
+
+  React.useEffect(() => {
+    if (avaliacoes && avaliacoes.length > 0) {
+      const totalPontos = avaliacoes.reduce(
+        (total, avaliacao) => total + avaliacao,
+        0
+      );
+      setAverageRating(totalPontos / avaliacoes.length);
+    } else {
+      setAverageRating(null);
+    }
+  }, [avaliacoes]);
+
   React.useEffect(() => {
     if (post) {
       defineImg(post.category);
@@ -76,6 +98,12 @@ const SinglePost = () => {
         break;
     }
   }
+
+  const addComment = (newComment: CommentInterface) => {
+    setComments((prevComments) =>
+      prevComments ? [...prevComments, newComment] : [newComment]
+    );
+  };
 
   return (
     <section className="container">
@@ -107,34 +135,42 @@ const SinglePost = () => {
         </TitleComponent>
 
         <div>
-          {avaliacoes && (
-            <ShowStar rating={avaliacoes as number[]} sizeStar="2.5rem" />
+          {averageRating !== null && (
+            <ShowStar rating={averageRating} sizeStar="2.5rem" />
           )}
-          <p>4/5</p>
+          <p>
+            {averageRating !== null && (
+              <span>{averageRating.toFixed(1)}/5</span>
+            )}
+          </p>
         </div>
       </div>
 
       <div className={styles.commentsSection}>
-        <h3>AVALIAÇÕES: 3</h3>
+        <h3>AVALIAÇÕES: {comments?.length}</h3>
         <div className={styles.comment}>
-          {id && <CommentPost id={id} />}
-          {comments?.map((comment) => (
-            <Comment
-              key={comment._id}
-              photoUrl={comment.photoUrl}
-              author={comment.author}
-              rating={comment.rating ? comment.rating : 0}
-              userId={comment._id ? comment._id : ""}
-              postId={id ? id : ""}
-              comment={comment.comment}
-              createdAt={comment.createdAt ? comment.createdAt : ""}
-            />
-          ))}
-
-          {/* <Comment />
-          <Comment />
-          <Comment />
-          <Comment /> */}
+          {id && !exiteEm && !userPost && (
+            <CommentPost id={id} addComment={addComment} />
+          )}
+          {comments
+            ?.slice()
+            .reverse()
+            .map((comment) => (
+              <Comment
+                key={comment._id}
+                photoUrl={comment.photoUrl}
+                author={comment.author}
+                rating={comment.rating ? comment.rating : 0}
+                userId={comment._id ? comment._id : ""}
+                postId={id ? id : ""}
+                comment={comment.comment}
+                createdAt={
+                  comment.createdAt
+                    ? formatarDatasComentarios(comment.createdAt)
+                    : ""
+                }
+              />
+            ))}
         </div>
       </div>
     </section>

@@ -74,25 +74,25 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/">
+                <Link to="/posts/photo">
                   <img src={assets.photoSubmenu} alt="" />
                   FOTOS
                 </Link>
               </li>
               <li>
-                <Link to="/">
+                <Link to="/posts/video">
                   <img src={assets.videoSubmenu} alt="" />
                   VIDEOS
                 </Link>
               </li>
               <li>
-                <Link to="/">
+                <Link to="/posts/writing">
                   <img src={assets.writeSubmenu} alt="" />
                   ESCRITA
                 </Link>
               </li>
               <li>
-                <Link to="/">
+                <Link to="/posts/art">
                   <img src={assets.drawSubmenu} alt="" />
                   DESENHOS
                 </Link>

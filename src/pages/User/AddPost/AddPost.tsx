@@ -17,7 +17,7 @@ const CreatePostSchema = z.object({
   name: z
     .string()
     .min(3, "Nome do post é obrigatorio e deve ter mais de 3 letras")
-    .max(20, "Nome do post deve ter menos de 20 letras"),
+    .max(40, "Nome do post deve ter menos de 40 letras"),
   author: z
     .string()
     .min(3, "Nome do autor é obrigatorio e deve ter mais de 3 letras")
@@ -51,7 +51,6 @@ const AddPost = () => {
     const { response } = await request(url, options);
     if (response && response.ok) console.log("opecao feita com sucesso");
     else console.log("erro ao realizar a operação");
-    console.log("data: ", data);
   }
 
   const {

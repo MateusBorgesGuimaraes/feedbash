@@ -13,8 +13,8 @@ type CommentProps = {
   authorId?: string;
   reports?: string[];
   photoUrl?: string;
-  rating: number | number[];
-  createdAt: string;
+  rating: number;
+  createdAt?: string;
   updatedAt?: Date;
 };
 

@@ -4,12 +4,14 @@ import StarRating from "../StarRating/StarRating";
 import useFetch from "../../Hooks/useFetch";
 import { POST_COMMENT } from "../../Api";
 import { UserContext } from "../../Context/UserContext";
+import { CommentInterface } from "../../types";
 
 type CommentPostProps = {
   id: string;
+  addComment: (comment: CommentInterface) => void;
 };
 
-const CommentPost = ({ id }: CommentPostProps) => {
+const CommentPost = ({ id, addComment }: CommentPostProps) => {
   const [active, setActive] = useState(false);
   const [rating, setRating] = useState(0);
   const { request } = useFetch();
@@ -73,7 +75,12 @@ const CommentPost = ({ id }: CommentPostProps) => {
     });
 
     const { response, json } = await request(url, options);
-    if (response && response.ok) console.log("comentarios feito");
+    if (response && response.ok) {
+      console.log("comentarios feito");
+      addComment(json);
+      setActive(false);
+      setRating(0);
+    }
   }
 
   return (

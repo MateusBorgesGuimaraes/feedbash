@@ -16,8 +16,3 @@
 .postCard > p > span {
   color: var(--purple-800);
 }
-
-.rating {
-  align-self: center;
-  margin: 0.75rem 0px;
-}

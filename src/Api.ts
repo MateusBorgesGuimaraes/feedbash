@@ -105,3 +105,21 @@ export function GET_COMMENTS_POST(id: string) {
     },
   };
 }
+
+export function GET_NEW_POSTS() {
+  return {
+    url: API_URL + "/posts?new=new",
+    options: {
+      method: "GET",
+    },
+  };
+}
+
+export function GET_POSTS_BY_CATEGORY(id: string) {
+  return {
+    url: API_URL + "/posts?category=" + id,
+    options: {
+      method: "GET",
+    },
+  };
+}

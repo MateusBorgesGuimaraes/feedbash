@@ -6,8 +6,24 @@ import Talk from "../../components/Talk/Talk";
 import { Link } from "react-router-dom";
 import CardButton from "../../components/CardButton/CardButton";
 import TableComponent from "../../components/TableComponent/TableComponent";
+import useFetch from "../../Hooks/useFetch";
+import { PostInterface, formatarDatasComentarios } from "../../types";
+import { GET_NEW_POSTS } from "../../Api";
 
 const Home = () => {
+  const [newPost, setNewPosts] = React.useState<PostInterface[] | null>(null);
+  const { request } = useFetch();
+
+  React.useEffect(() => {
+    async function getNewPosts() {
+      const { url, options } = GET_NEW_POSTS();
+      const { response, json } = await request(url, options);
+      if (response && response.ok) setNewPosts(json);
+      else console.log("erro ao setar posts");
+    }
+    getNewPosts();
+  }, [request]);
+
   return (
     <section className={`${styles.heroBg}`}>
       <main className={`${styles.heroLayout} container`}>
@@ -67,13 +83,21 @@ const Home = () => {
             <img src={assets.twoStarDec} alt="" />
           </div>
           <div className={styles.imgCategoriesContainer}>
-            <CardButton img={assets.videos}>VIDEOS</CardButton>
+            <CardButton link="/posts/video" img={assets.videos}>
+              VIDEOS
+            </CardButton>
 
-            <CardButton img={assets.art}>DESENHOS</CardButton>
+            <CardButton link="/posts/art" img={assets.art}>
+              DESENHOS
+            </CardButton>
 
-            <CardButton img={assets.photo}>FOTOS</CardButton>
+            <CardButton link="/posts/photo" img={assets.photo}>
+              FOTOS
+            </CardButton>
 
-            <CardButton img={assets.write}>ESCRITA</CardButton>
+            <CardButton link="/posts/writing" img={assets.write}>
+              ESCRITA
+            </CardButton>
           </div>
         </div>
       </section>
@@ -95,77 +119,19 @@ const Home = () => {
             </tr>
 
             <>
-              <tr>
-                <td>
-                  <Link to="">
-                    <img src={assets.linkPurple} alt="" /> link
-                  </Link>
-                </td>
-                <td>mateus borges</td>
-                <td>educacional</td>
-                <td>desenho</td>
-                <td>12/07/2023</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <Link to="">
-                    <img src={assets.linkPurple} alt="" /> link
-                  </Link>
-                </td>
-                <td>mateus borges</td>
-                <td>educacional</td>
-                <td>desenho</td>
-                <td>12/07/2023</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <Link to="">
-                    <img src={assets.linkPurple} alt="" /> link
-                  </Link>
-                </td>
-                <td>mateus borges</td>
-                <td>educacional</td>
-                <td>desenho</td>
-                <td>12/07/2023</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <Link to="">
-                    <img src={assets.linkPurple} alt="" /> link
-                  </Link>
-                </td>
-                <td>mateus borges</td>
-                <td>educacional</td>
-                <td>desenho</td>
-                <td>12/07/2023</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <Link to="">
-                    <img src={assets.linkPurple} alt="" /> link
-                  </Link>
-                </td>
-                <td>mateus borges</td>
-                <td>educacional</td>
-                <td>desenho</td>
-                <td>12/07/2023</td>
-              </tr>
-
-              <tr>
-                <td>
-                  <Link to="">
-                    <img src={assets.linkPurple} alt="" /> link
-                  </Link>
-                </td>
-                <td>mateus borges</td>
-                <td>educacional</td>
-                <td>desenho</td>
-                <td>12/07/2023</td>
-              </tr>
+              {newPost?.map((post) => (
+                <tr key={post._id}>
+                  <td>
+                    <Link to={`/post/${post._id}`}>
+                      <img src={assets.linkPurple} alt="" /> link
+                    </Link>
+                  </td>
+                  <td>{post.author}</td>
+                  <td>{post.scope}</td>
+                  <td>{post.category}</td>
+                  <td>{formatarDatasComentarios(post.createdAt)}</td>
+                </tr>
+              ))}
             </>
           </TableComponent>
         </div>

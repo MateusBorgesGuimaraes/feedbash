@@ -4,14 +4,15 @@ export type SavedCommentInterface = {
 };
 
 export type UserInterface = {
+  _id?: string;
   name: string;
   email: string;
   password: string;
   photoUrl: string;
-  isAdmin?: boolean; // isAdmin é opcional porque tem um valor padrão
+  isAdmin?: boolean;
   savedComments: SavedCommentInterface[];
-  createdAt?: Date; // Timestamps são opcionais porque serão gerados pelo Mongoose
-  updatedAt?: Date; //
+  createdAt?: Date;
+  updatedAt?: Date;
 };
 
 export type LoginInterface = {
@@ -22,13 +23,14 @@ export type LoginInterface = {
 export type PostInterface = {
   name: string;
   author: string;
+  authorId: string;
   focus: string;
   scope: string;
   link: string;
   _id: string;
   category: "video" | "art" | "photo" | "writing";
-  rating?: 1 | 2 | 3 | 4 | 5;
-  createdAt?: Date;
+  rating: 1 | 2 | 3 | 4 | 5;
+  createdAt: string;
   updatedAt?: Date;
 };
 
@@ -40,7 +42,17 @@ export type CommentInterface = {
   authorId?: string;
   reports?: string[];
   photoUrl?: string;
-  rating?: 1 | 2 | 3 | 4 | 5;
+  rating: 1 | 2 | 3 | 4 | 5;
   createdAt?: string;
   updatedAt?: Date;
 };
+
+export function formatarDatasComentarios(comment: string) {
+  let secondPart;
+  const firstPart = comment?.split("-");
+  if (firstPart) {
+    secondPart = firstPart[2].split("T");
+  }
+  if (secondPart && firstPart)
+    return `${secondPart[0]}/${firstPart[1]}/${firstPart[0]}`;
+}

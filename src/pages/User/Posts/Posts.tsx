@@ -39,7 +39,7 @@ const Posts = () => {
       setMyPosts(
         (prevPosts) => prevPosts?.filter((post) => post._id !== id) || null
       );
-    } else window.alert("Erro ao deletar o ");
+    } else window.alert("Erro ao deletar o post");
   }
 
   return (

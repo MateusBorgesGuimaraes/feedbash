@@ -42,15 +42,13 @@ const AddPost = () => {
   });
 
   const { loading, error, request } = useFetch();
-  const { data } = React.useContext(UserContext);
   const token = window.localStorage.getItem("token");
 
   async function createPost(data: IPostCreate) {
     if (!token) return;
     const { url, options } = POST_POST(data, token);
     const { response } = await request(url, options);
-    if (response && response.ok) console.log("opecao feita com sucesso");
-    else console.log("erro ao realizar a operação");
+    if (!response || !response.ok) console.log("erro ao realizar a operação");
   }
 
   const {

@@ -8,7 +8,7 @@ import ButtonSmall from "../../../components/ButtonSmall/ButtonSmall";
 import { CommentInterface, formatarDatasComentarios } from "../../../types";
 import { UserContext } from "../../../Context/UserContext";
 import useFetch from "../../../Hooks/useFetch";
-import { GET_ALL_USER_COMMENTS } from "../../../Api";
+import { DELETE_COMMENT, GET_ALL_USER_COMMENTS } from "../../../Api";
 
 const MyReviews = () => {
   const [comments, setComments] = React.useState<CommentInterface[] | null>(
@@ -29,6 +29,23 @@ const MyReviews = () => {
     getUserComments();
   }, [data, request]);
 
+  async function deleteComment(id: string) {
+    const token = window.localStorage.getItem("token");
+    const confirm = window.confirm(
+      "Tem certeza que deseja deletar a review? A operação não podera ser desfeita"
+    );
+    if (!id || !token || !confirm) return;
+    const { url, options } = DELETE_COMMENT(id, token);
+    const { response } = await request(url, options);
+    if (response && response.ok) {
+      window.alert("Comentario Deletado");
+      setComments(
+        (prevComments) =>
+          prevComments?.filter((comment) => comment._id !== id) || null
+      );
+    } else window.alert("Erro ao deletar o comentario");
+  }
+
   return (
     <div className={styles.tableContainer}>
       <TableComponent caption="criticas">
@@ -42,7 +59,7 @@ const MyReviews = () => {
 
         <>
           {comments?.map((comment) => (
-            <tr>
+            <tr key={comment._id}>
               <td>
                 <Link to={`/post/${comment.postId}#${comment._id}`}>
                   <img src={assets.linkPurple} alt="" /> link
@@ -54,7 +71,12 @@ const MyReviews = () => {
                 <ShowStar rating={comment.rating} />
               </td>
               <td>
-                <ButtonSmall icon={assets.excludePurple}>EXCLUIR</ButtonSmall>
+                <ButtonSmall
+                  onClick={() => deleteComment(comment._id || "f")}
+                  icon={assets.excludePurple}
+                >
+                  EXCLUIR
+                </ButtonSmall>
               </td>
             </tr>
           ))}

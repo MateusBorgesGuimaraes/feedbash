@@ -76,7 +76,6 @@ const CommentPost = ({ id, addComment }: CommentPostProps) => {
 
     const { response, json } = await request(url, options);
     if (response && response.ok) {
-      console.log("comentarios feito");
       addComment(json);
       setActive(false);
       setRating(0);

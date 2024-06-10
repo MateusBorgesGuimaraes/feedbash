@@ -3,7 +3,7 @@ import styles from "./Comment.module.css";
 import { assets } from "../../assets/assets";
 import ShowStar from "../ShowStar/ShowStar";
 import { useParams } from "react-router-dom";
-import { CommentInterface, SavedCommentInterface } from "../../types";
+import { SavedCommentInterface } from "../../types";
 import useFetch from "../../Hooks/useFetch";
 import {
   REPORT_COMMENT,
@@ -44,7 +44,6 @@ function Comment({
   const { login, data } = React.useContext(UserContext);
   const { request } = useFetch();
   const { id } = useParams();
-  const param = useParams();
   const commentRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -99,7 +98,6 @@ function Comment({
       });
       const { response } = await request(url, options);
       if (response && response.ok) {
-        console.log("comentario salvo");
         setSave(true);
       } else {
         console.log("erro ao salvar comentario");

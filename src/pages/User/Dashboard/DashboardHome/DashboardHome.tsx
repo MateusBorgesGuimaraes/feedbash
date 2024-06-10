@@ -3,13 +3,15 @@ import ButtonSmall from "../../../../components/ButtonSmall/ButtonSmall";
 import { assets } from "../../../../assets/assets";
 import styles from "./DashboardHome.module.css";
 import { UserContext } from "../../../../Context/UserContext";
+import { formatarDatasComentarios } from "../../../../types";
 
 const DashboardHome = () => {
-  const { userLogout } = React.useContext(UserContext);
+  const { userLogout, data } = React.useContext(UserContext);
+  if (!data) return;
   return (
     <div className={styles.dashHome}>
       <div className={styles.dashHomeImage}>
-        <img src={assets.userTest1} alt="" />
+        <img src={data.photoUrl} alt="" />
       </div>
       <div className={styles.dashHomeInfo}>
         <div className={styles.dashHomeInfoText}>
@@ -17,13 +19,13 @@ const DashboardHome = () => {
             <span>STATUS:</span> Admin
           </p>
           <p>
-            <span>NOME:</span>Marta Pereira
+            <span>NOME:</span> {data?.name}
           </p>
           <p>
-            <span>TELEFONE:</span> (38) 99999-9999
+            <span>CRIADO EM:</span> {formatarDatasComentarios(data.createdAt)}
           </p>
           <p>
-            <span>EMAIL:</span> marta@gmail.com
+            <span>EMAIL:</span> {data.email}
           </p>
         </div>
 

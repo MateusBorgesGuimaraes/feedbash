@@ -193,3 +193,60 @@ export function GET_ALL_USER_COMMENTS(id: string) {
     },
   };
 }
+
+export function GET_COMMENT_BY_ID(id: string) {
+  return {
+    url: API_URL + "/comments/find/" + id,
+    options: {
+      method: "GET",
+    },
+  };
+}
+
+export function DELETE_COMMENT(id: string, token: string) {
+  return {
+    url: API_URL + "/comments/" + id,
+    options: {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}
+
+export function GET_ALL_USERS(token: string) {
+  return {
+    url: API_URL + "/users",
+    options: {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}
+
+export function DELETE_USER(id: string, token: string) {
+  return {
+    url: API_URL + "/users/" + id,
+    options: {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}
+
+export function GET_ALL_USERS_COMMENTS(token: string) {
+  return {
+    url: API_URL + "/comments/",
+    options: {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}

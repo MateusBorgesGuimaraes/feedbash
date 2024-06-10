@@ -11,7 +11,7 @@ export type UserInterface = {
   photoUrl: string;
   isAdmin?: boolean;
   savedComments: SavedCommentInterface[];
-  createdAt?: Date;
+  createdAt: string;
   updatedAt?: Date;
 };
 
@@ -45,6 +45,21 @@ export type CommentInterface = {
   rating: 1 | 2 | 3 | 4 | 5;
   createdAt: string;
   updatedAt?: Date;
+};
+
+export type CommentSavedTableInterface = {
+  postId: string;
+  author: string;
+  commentId: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+  createdAt: string;
+};
+
+export type CommetsReport = {
+  commentId: string;
+  postId: string;
+  reportedBy: string[];
+  reportsCount: number;
 };
 
 export function formatarDatasComentarios(comment: string) {

@@ -5,138 +5,59 @@ import { Link } from "react-router-dom";
 import { assets } from "../../../assets/assets";
 import ShowStar from "../../../components/ShowStar/ShowStar";
 import ButtonSmall from "../../../components/ButtonSmall/ButtonSmall";
+import { CommentInterface, formatarDatasComentarios } from "../../../types";
+import { UserContext } from "../../../Context/UserContext";
+import useFetch from "../../../Hooks/useFetch";
+import { GET_ALL_USER_COMMENTS } from "../../../Api";
 
 const MyReviews = () => {
+  const [comments, setComments] = React.useState<CommentInterface[] | null>(
+    null
+  );
+  const { request } = useFetch();
+  const { data } = React.useContext(UserContext);
+
+  React.useEffect(() => {
+    async function getUserComments() {
+      if (!data?._id) return;
+      const { url, options } = GET_ALL_USER_COMMENTS(data?._id);
+
+      const { response, json } = await request(url, options);
+      if (response && response.ok) setComments(json);
+      else "Erro ao buscar comentarios";
+    }
+    getUserComments();
+  }, [data, request]);
+
   return (
     <div className={styles.tableContainer}>
       <TableComponent caption="criticas">
         <tr>
           <th>link</th>
-          <th>categoria</th>
+
           <th>data</th>
-          <th>avaliação</th>
+          <th>rating</th>
           <th>excluir postagem</th>
         </tr>
 
         <>
-          <tr>
-            <td>
-              <Link to="/">
-                <img src={assets.linkPurple} alt="" /> link
-              </Link>
-            </td>
-            <td>Video</td>
+          {comments?.map((comment) => (
+            <tr>
+              <td>
+                <Link to={`/post/${comment.postId}#${comment._id}`}>
+                  <img src={assets.linkPurple} alt="" /> link
+                </Link>
+              </td>
 
-            <td>12/07/2023</td>
-            <td>
-              <ShowStar />
-            </td>
-            <td>
-              <ButtonSmall icon={assets.excludePurple}>EXCLUIR</ButtonSmall>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <Link to="/">
-                <img src={assets.linkPurple} alt="" /> link
-              </Link>
-            </td>
-            <td>Video</td>
-
-            <td>12/07/2023</td>
-            <td>
-              <ShowStar />
-            </td>
-            <td>
-              <ButtonSmall icon={assets.excludePurple}>EXCLUIR</ButtonSmall>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <Link to="/">
-                <img src={assets.linkPurple} alt="" /> link
-              </Link>
-            </td>
-            <td>Video</td>
-
-            <td>12/07/2023</td>
-            <td>
-              <ShowStar />
-            </td>
-            <td>
-              <ButtonSmall icon={assets.excludePurple}>EXCLUIR</ButtonSmall>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <Link to="/">
-                <img src={assets.linkPurple} alt="" /> link
-              </Link>
-            </td>
-            <td>Video</td>
-
-            <td>12/07/2023</td>
-            <td>
-              <ShowStar />
-            </td>
-            <td>
-              <ButtonSmall icon={assets.excludePurple}>EXCLUIR</ButtonSmall>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <Link to="/">
-                <img src={assets.linkPurple} alt="" /> link
-              </Link>
-            </td>
-            <td>Video</td>
-
-            <td>12/07/2023</td>
-            <td>
-              <ShowStar />
-            </td>
-            <td>
-              <ButtonSmall icon={assets.excludePurple}>EXCLUIR</ButtonSmall>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <Link to="/">
-                <img src={assets.linkPurple} alt="" /> link
-              </Link>
-            </td>
-            <td>Video</td>
-
-            <td>12/07/2023</td>
-            <td>
-              <ShowStar />
-            </td>
-            <td>
-              <ButtonSmall icon={assets.excludePurple}>EXCLUIR</ButtonSmall>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <Link to="/">
-                <img src={assets.linkPurple} alt="" /> link
-              </Link>
-            </td>
-            <td>Video</td>
-
-            <td>12/07/2023</td>
-            <td>
-              <ShowStar />
-            </td>
-            <td>
-              <ButtonSmall icon={assets.excludePurple}>EXCLUIR</ButtonSmall>
-            </td>
-          </tr>
+              <td>{formatarDatasComentarios(comment.createdAt)}</td>
+              <td>
+                <ShowStar rating={comment.rating} />
+              </td>
+              <td>
+                <ButtonSmall icon={assets.excludePurple}>EXCLUIR</ButtonSmall>
+              </td>
+            </tr>
+          ))}
         </>
       </TableComponent>
     </div>

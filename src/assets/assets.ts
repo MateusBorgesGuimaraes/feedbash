@@ -24,6 +24,7 @@ import photoSubmenu from "./icons/photo-submenu-icon.svg";
 import rating from "./icons/rating-icon.svg";
 import relievedEmoji from "./icons/relieved-emoji-face-icon.svg";
 import report from "./icons/report-icon.svg";
+import reportRed from "./icons/report-red-icon.svg";
 import save from "./icons/save-icon.svg";
 import smilingEmoji from "./icons/smiling-face-emoji-face-icon.svg";
 import supriseEmoji from "./icons/surprise-emoji-face-icon.svg";
@@ -65,6 +66,7 @@ import write from "./images/write-img.jpg";
 //EXPORTS
 
 export const assets = {
+  reportRed,
   unsavePurple,
   home1,
   home2,

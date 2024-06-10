@@ -43,7 +43,7 @@ export type CommentInterface = {
   reports?: string[];
   photoUrl?: string;
   rating: 1 | 2 | 3 | 4 | 5;
-  createdAt?: string;
+  createdAt: string;
   updatedAt?: Date;
 };
 

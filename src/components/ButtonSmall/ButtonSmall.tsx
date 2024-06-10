@@ -16,7 +16,7 @@ const ButtonSmall = ({
   onClick,
   color = "white",
   background = "hsl(268, 46%, 39%)",
-  ...rest
+  ...props
 }: ButtonSmallProps) => {
   const customStyles: React.CSSProperties = {
     background,
@@ -30,7 +30,7 @@ const ButtonSmall = ({
       className={styles.smallButton}
       style={customStyles}
       onClick={onClick}
-      {...rest}
+      {...props}
       onMouseEnter={(e) => (e.currentTarget.style.background = hoverBackground)}
       onMouseLeave={(e) => (e.currentTarget.style.background = background)}
     >

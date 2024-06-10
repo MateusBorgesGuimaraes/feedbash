@@ -158,7 +158,7 @@ const SinglePost = () => {
             .map((comment) => (
               <Comment
                 key={comment._id}
-                authorId={comment.authorId}
+                authorId={post?.authorId || ""}
                 commentId={comment._id}
                 photoUrl={comment.photoUrl}
                 author={comment.author}
@@ -166,6 +166,7 @@ const SinglePost = () => {
                 userId={comment._id ? comment._id : ""}
                 postId={id ? id : ""}
                 comment={comment.comment}
+                reports={comment.reports}
                 createdAt={
                   comment.createdAt
                     ? formatarDatasComentarios(comment.createdAt)

@@ -151,3 +151,45 @@ export function UNSAVE_COMMENT_POST<T>(token: string, body: T) {
     },
   };
 }
+
+export function REPORT_COMMENT(id: string, token: string) {
+  return {
+    url: API_URL + "/comments/report/" + id,
+    options: {
+      method: "PUT",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}
+
+export function GET_POST_BY_USER(id: string) {
+  return {
+    url: API_URL + "/posts/user/" + id,
+    options: {
+      method: "GET",
+    },
+  };
+}
+
+export function DELETE_POST(id: string, token: string) {
+  return {
+    url: API_URL + "/posts/" + id,
+    options: {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    },
+  };
+}
+
+export function GET_ALL_USER_COMMENTS(id: string) {
+  return {
+    url: API_URL + "/comments/user-comments/" + id,
+    options: {
+      method: "GET",
+    },
+  };
+}
